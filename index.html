@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="icon" href="https://jacksonchen7at.github.io/bioblog/plant.png">
-<title>Silent Heroes: Plant Diversity Blog</title>
+<title>Plant Diversity: Gymnosperms & Angiosperms</title>
 
 <style>
     body {
@@ -25,6 +25,14 @@
         margin: 0 15px;
         text-decoration: none;
         font-weight: bold;
+        transition: 0.3s;
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    nav a:hover {
+        background: rgba(255,255,255,0.2);
+        box-shadow: 0 0 12px rgba(255,255,255,0.4);
     }
 
     header {
@@ -39,15 +47,29 @@
         margin: 20px;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 0.8s ease;
+    }
+
+    section.visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     section:hover {
-        box-shadow: 0 0 25px rgba(46, 125, 50, 0.4);
+        box-shadow: 0 0 25px rgba(46, 125, 50, 0.45);
+        transform: translateY(-3px);
     }
 
     h2 {
         color: #2e7d32;
+    }
+
+    p {
+        line-height: 1.8;
+        color: #333;
     }
 
     .fact {
@@ -55,7 +77,13 @@
         padding: 10px;
         border-left: 5px solid #2e7d32;
         margin: 10px 0;
-        border-radius: 6px;
+
+        transition: 0.3s;
+    }
+
+    .fact:hover {
+        box-shadow: 0 0 15px rgba(46,125,50,0.4);
+        transform: translateY(-2px);
     }
 
     footer {
@@ -69,34 +97,36 @@
 <body>
 
 <nav>
+    <a href="#intro">Intro</a>
     <a href="#gymnosperms">Gymnosperms</a>
     <a href="#angiosperms">Angiosperms</a>
     <a href="#conclusion">Conclusion</a>
 </nav>
 
 <header>
-    <h1>Plant Diversity Blog</h1>
-    <p>Gymnosperms and Angiosperms Explained Simply</p>
+    <h1>Plant Diversity: Gymnosperms & Angiosperms</h1>
+    <p>Understanding how seed plants shape our world</p>
 </header>
+
+<section id="intro">
+    <h2>Introduction</h2>
+    <p>
+        Plants are not all the same. Over time, they have evolved into different groups with unique ways of surviving and reproducing.
+        Two major groups are gymnosperms and angiosperms. These plants play a huge role in ecosystems and are essential for life on Earth.
+    </p>
+</section>
 
 <section id="gymnosperms">
     <h2>Gymnosperms</h2>
 
     <p>
-        Gymnosperms are plants that produce seeds without flowers or fruits. Instead, their seeds are usually found in cones. 
-        They are some of the oldest plant groups on Earth and are mostly evergreen, meaning they stay green all year.
-    </p>
-
-    <p>
-        These plants are very important in ecosystems because they can survive in cold and dry environments where many other plants cannot grow.
+        Gymnosperms are seed-producing plants that do not form flowers or fruits. Instead, their seeds develop in cones that are often visible on the plant.
+        Most gymnosperms are evergreen, meaning they keep their leaves all year. They are adapted to survive in cold or dry environments where many other plants struggle.
+        They are important in nature because they provide habitats for wildlife and resources like wood and paper for humans.
     </p>
 
     <div class="fact">
-        Example: Pine trees are one of the most common gymnosperms and are used for wood, paper, and decoration.
-    </div>
-
-    <div class="fact">
-        Gymnosperms do not rely on flowers for reproduction, which makes them different from most modern plants.
+        Fun Fact: Some pine trees (a type of gymnosperm) can live for over 1,000 years.
     </div>
 </section>
 
@@ -104,28 +134,13 @@
     <h2>Angiosperms</h2>
 
     <p>
-        Angiosperms are flowering plants and are the most diverse group of plants on Earth. They produce seeds inside fruits, 
-        which helps protect them and spread them more easily.
-    </p>
-
-    <p>
-        These plants are extremely important because they provide most of the food humans eat, including fruits, vegetables, and grains.
-    </p>
-
-    <h3>Monocot Example: Corn</h3>
-    <p>
-        Corn is a monocot plant, meaning it has one seed leaf. Its leaves usually have parallel veins and it grows in a straight pattern.
-        Corn is one of the most important food crops in the world.
-    </p>
-
-    <h3>Dicot Example: Bean Plant</h3>
-    <p>
-        Bean plants are dicots, meaning they have two seed leaves. They usually have branching veins in their leaves and grow in a wider pattern.
-        Beans are an important source of protein in many diets.
+        Angiosperms are flowering plants and the most diverse group in the plant kingdom. They produce seeds inside fruits, which helps protect them and spread them more easily.
+        This group includes many plants we depend on, such as fruits, vegetables, grains, flowers, and trees.
+        Angiosperms are found almost everywhere on Earth and are extremely important for food chains and ecosystems.
     </p>
 
     <div class="fact">
-        Angiosperms adapted to almost every environment on Earth, from deserts to rainforests.
+        Fun Fact: Flowering plants evolved later than gymnosperms, but now make up over 80% of all plant species on Earth.
     </div>
 </section>
 
@@ -133,18 +148,32 @@
     <h2>Conclusion</h2>
 
     <p>
-        Gymnosperms and angiosperms are both essential for life on Earth. Gymnosperms show how plants can survive in tough environments, 
-        while angiosperms dominate ecosystems and provide most of the world’s food.
-    </p>
-
-    <p>
-        Understanding these plant groups helps us appreciate how diverse and important plant life really is.
+        Gymnosperms and angiosperms are both essential parts of our world. Even though they are very different, they both support life on Earth in important ways.
+        From forests to food crops, plants shape the environment we live in every day. Understanding them helps us appreciate and protect nature.
     </p>
 </section>
 
 <footer>
-    Biology Blog Project
+    <p>Biology Blog Project</p>
 </footer>
+
+<script>
+    const sections = document.querySelectorAll("section");
+
+    function showSections() {
+        const trigger = window.innerHeight * 0.85;
+
+        sections.forEach(sec => {
+            const top = sec.getBoundingClientRect().top;
+            if (top < trigger) {
+                sec.classList.add("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", showSections);
+    window.addEventListener("load", showSections);
+</script>
 
 </body>
 </html>
