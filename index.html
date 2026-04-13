@@ -1,126 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>My Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+<link rel="icon" href="https://jacksonchen7at.github.io/bioblog/plant.png">
+<title>Silent Heroes: Plant Diversity Blog</title>
+
+<style>
+    body {
+        font-family: Arial;
+        margin: 0;
+        background: #f4f8f4;
     }
 
-    body {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #333;
+    nav {
+        background: #2e7d32;
+        padding: 15px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
     }
 
     header {
-      text-align: center;
-      padding: 40px;
-      color: white;
+        background: linear-gradient(to right, #56ab2f, #a8e063);
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
     }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+    section {
+        background: white;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+    section:hover {
+        box-shadow: 0 0 25px rgba(46, 125, 50, 0.4);
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
+    h2 {
+        color: #2e7d32;
     }
 
-    .blog-post {
-      background: white;
-      padding: 30px;
-      margin-bottom: 25px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
-    }
-
-    .blog-post:hover {
-      transform: translateY(-5px);
-    }
-
-    .blog-post h2 {
-      margin-bottom: 15px;
-      color: #764ba2;
-    }
-
-    .blog-post p {
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 5px 12px;
-      border-radius: 20px;
-      background: #667eea;
-      color: white;
-      font-size: 0.8rem;
-      margin-right: 8px;
+    .fact {
+        background: #e8f5e9;
+        padding: 10px;
+        border-left: 5px solid #2e7d32;
+        margin: 10px 0;
+        border-radius: 6px;
     }
 
     footer {
-      text-align: center;
-      padding: 20px;
-      color: white;
-      opacity: 0.8;
+        text-align: center;
+        padding: 20px;
+        color: gray;
     }
-  </style>
+</style>
 </head>
+
 <body>
 
+<nav>
+    <a href="#gymnosperms">Gymnosperms</a>
+    <a href="#angiosperms">Angiosperms</a>
+    <a href="#conclusion">Conclusion</a>
+</nav>
+
 <header>
-  <h1>My Awesome Blog</h1>
-  <p>Thoughts, stories, and ideas</p>
+    <h1>Plant Diversity Blog</h1>
+    <p>Gymnosperms and Angiosperms Explained Simply</p>
 </header>
 
-<div class="container">
+<section id="gymnosperms">
+    <h2>Gymnosperms</h2>
 
-  <div class="blog-post">
-    <h2>🌟 First Blog Post</h2>
-    <div>
-      <span class="tag">Life</span>
-      <span class="tag">Thoughts</span>
+    <p>
+        Gymnosperms are plants that produce seeds without flowers or fruits. Instead, their seeds are usually found in cones. 
+        They are some of the oldest plant groups on Earth and are mostly evergreen, meaning they stay green all year.
+    </p>
+
+    <p>
+        These plants are very important in ecosystems because they can survive in cold and dry environments where many other plants cannot grow.
+    </p>
+
+    <div class="fact">
+        Example: Pine trees are one of the most common gymnosperms and are used for wood, paper, and decoration.
     </div>
-    <p>
-      This is your first real blog-style paragraph. Instead of short bullet points like a presentation, this is written in a smooth, readable way that flows naturally. A real blog should feel like you're talking to the reader.
-    </p>
-    <p>
-      You can write longer ideas, tell stories, explain things, or share opinions. Notice how the spacing and layout make it easier to read compared to something that looks like slides.
-    </p>
-  </div>
 
-  <div class="blog-post">
-    <h2>🚀 Second Post: Leveling Up</h2>
-    <div>
-      <span class="tag">Coding</span>
-      <span class="tag">Progress</span>
+    <div class="fact">
+        Gymnosperms do not rely on flowers for reproduction, which makes them different from most modern plants.
     </div>
-    <p>
-      Making your blog look clean and modern is all about spacing, colors, and typography. Bright gradients and soft shadows make everything feel more alive and less boring.
-    </p>
-    <p>
-      Try adding images, animations, or even comments later. This is already a huge step up from a basic page.
-    </p>
-  </div>
+</section>
 
-</div>
+<section id="angiosperms">
+    <h2>Angiosperms</h2>
+
+    <p>
+        Angiosperms are flowering plants and are the most diverse group of plants on Earth. They produce seeds inside fruits, 
+        which helps protect them and spread them more easily.
+    </p>
+
+    <p>
+        These plants are extremely important because they provide most of the food humans eat, including fruits, vegetables, and grains.
+    </p>
+
+    <h3>Monocot Example: Corn</h3>
+    <p>
+        Corn is a monocot plant, meaning it has one seed leaf. Its leaves usually have parallel veins and it grows in a straight pattern.
+        Corn is one of the most important food crops in the world.
+    </p>
+
+    <h3>Dicot Example: Bean Plant</h3>
+    <p>
+        Bean plants are dicots, meaning they have two seed leaves. They usually have branching veins in their leaves and grow in a wider pattern.
+        Beans are an important source of protein in many diets.
+    </p>
+
+    <div class="fact">
+        Angiosperms adapted to almost every environment on Earth, from deserts to rainforests.
+    </div>
+</section>
+
+<section id="conclusion">
+    <h2>Conclusion</h2>
+
+    <p>
+        Gymnosperms and angiosperms are both essential for life on Earth. Gymnosperms show how plants can survive in tough environments, 
+        while angiosperms dominate ecosystems and provide most of the world’s food.
+    </p>
+
+    <p>
+        Understanding these plant groups helps us appreciate how diverse and important plant life really is.
+    </p>
+</section>
 
 <footer>
-  <p>© 2026 My Blog | Made with code 💻</p>
+    Biology Blog Project
 </footer>
 
 </body>
