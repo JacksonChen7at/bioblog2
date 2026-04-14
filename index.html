@@ -37,18 +37,19 @@ nav a:hover {
     text-shadow: 0 0 10px #2563eb;
 }
 
-/* FIXED BUTTON CENTERING */
+/* FIXED BUTTON (20% smaller + moved up 20px) */
 #authBtn {
     position: absolute;
     right: 15px;
-    top: 50%;
+    top: calc(50% - 20px);
     transform: translateY(-50%);
     background: #2563eb;
     color: white;
     border: none;
-    padding: 10px 14px;
+    padding: 8px 11px; /* smaller than before */
     border-radius: 8px;
     cursor: pointer;
+    font-size: 0.8rem; /* makes it ~20% smaller */
 }
 
 /* MESSAGE BAR (NO ALERTS) */
@@ -196,7 +197,6 @@ input, textarea {
     <h1>Silent Heroes: Why Plants Matter</h1>
 </header>
 
-<!-- AUTH -->
 <div id="authModal" class="modal">
     <div class="authBox">
         <h2 id="authTitle">Sign In</h2>
@@ -290,8 +290,6 @@ function loadPosts() {
 
 loadPosts();
 
-
-// AUTH
 let mode = "signin";
 
 function authButtonAction() {
@@ -349,7 +347,6 @@ function updateBtn() {
         user ? "Logout (" + user + ")" : "Sign In / Sign Up";
 }
 
-// LOGOUT
 function openLogout(user) {
     let ok = confirm("Do you want to logout of " + user + "?");
     if (ok) {
