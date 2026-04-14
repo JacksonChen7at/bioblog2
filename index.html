@@ -206,7 +206,15 @@ input, textarea {
         <button onclick="closeAuth()">Close</button>
     </div>
 </div>
-<body>
+
+<!-- NEW LOGOUT MODAL -->
+<div id="logoutModal" class="modal">
+    <div class="authBox">
+        <h2 id="logoutText">Do you want to logout?</h2>
+        <button onclick="confirmLogout()">Yes</button>
+        <button onclick="cancelLogout()">No</button>
+    </div>
+</div>
 
 <div class="container">
 
@@ -245,17 +253,18 @@ Angiosperms are flowering plants and represent the most diverse group of plants 
 
 <p><b>Fun Fact:</b> Angiosperms make up about 80% of all known green plants on Earth.</p>
 </div>
-    <div class="card">
-        <h2>Create a Post</h2>
-        <input id="title" placeholder="Title">
-        <textarea id="content" placeholder="Write your post"></textarea>
-        <button onclick="addPost()">Publish</button>
-        <div id="posts"></div>
-    </div>
 
-    <a class="quiz-btn" href="quiz.html">
-        <button>Done reading? Take a quiz</button>
-    </a>
+<div class="card">
+    <h2>Create a Post</h2>
+    <input id="title" placeholder="Title">
+    <textarea id="content" placeholder="Write your post"></textarea>
+    <button onclick="addPost()">Publish</button>
+    <div id="posts"></div>
+</div>
+
+<a class="quiz-btn" href="quiz.html">
+    <button>Done reading? Take a quiz</button>
+</a>
 
 </div>
 
@@ -296,6 +305,7 @@ loadPosts();
 
 let mode = "signin";
 
+// AUTH
 function authButtonAction() {
     let user = localStorage.getItem("loggedInUser");
     if (user) {
@@ -311,11 +321,14 @@ function closeAuth() {
 
 function toggleMode() {
     mode = mode === "signin" ? "signup" : "signin";
+
     document.getElementById("authTitle").innerText =
         mode === "signin" ? "Sign In" : "Sign Up";
 
     document.getElementById("switchBtn").innerText =
-        mode === "signin" ? "Create an account" : "Already have an account? Sign in";
+        mode === "signin"
+        ? "Create an account"
+        : "Already have an account? Sign in";
 }
 
 function authAction() {
@@ -328,6 +341,7 @@ function authAction() {
         showMessage("Account created");
     } else {
         let saved = localStorage.getItem("user_" + u);
+
         if (saved === p) {
             localStorage.setItem("loggedInUser", u);
             closeAuth();
@@ -345,13 +359,29 @@ function updateBtn() {
         user ? "Logout (" + user + ")" : "Sign In / Sign Up";
 }
 
+// LOGOUT (NO confirm())
+let pendingUser = null;
+
 function openLogout(user) {
-    let ok = confirm("Do you want to logout of " + user + "?");
-    if (ok) {
-        localStorage.removeItem("loggedInUser");
-        updateBtn();
-        showMessage("You are logged out");
-    }
+    pendingUser = user;
+    document.getElementById("logoutText").innerText =
+        "Do you want to logout of " + user + "?";
+    document.getElementById("logoutModal").style.display = "flex";
+}
+
+function confirmLogout() {
+    localStorage.removeItem("loggedInUser");
+    updateBtn();
+    showMessage("You are logged out");
+
+    document.getElementById("logoutModal").style.display = "none";
+    pendingUser = null;
+}
+
+function cancelLogout() {
+    document.getElementById("logoutModal").style.display = "none";
+    document.getElementById("authModal").style.display = "flex";
+    pendingUser = null;
 }
 
 updateBtn();
