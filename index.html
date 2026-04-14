@@ -1,128 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Plant Blog</title>
+<title>Silent Heroes: Why Plants Matter</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #0b1220;
-        color: #e5e7eb;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1220;
+    color: #e5e7eb;
+}
 
-    header {
-        background: #111827;
-        padding: 25px;
-        text-align: center;
-        font-size: 26px;
-        font-weight: bold;
-        border-bottom: 1px solid #1f2937;
-    }
+nav {
+    background: #111827;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 1px solid #1f2937;
+}
 
-    .container {
-        width: 80%;
-        margin: auto;
-        padding: 20px;
-    }
+nav a {
+    color: #cfcfcf;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-    .post {
-        background: #111827;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #1f2937;
-        margin-top: 20px;
-    }
+nav a:hover {
+    color: #93c5fd;
+    text-shadow: 0 0 10px #2563eb;
+}
 
-    .time {
-        color: #93c5fd;
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
+header {
+    background: #111827;
+    text-align: center;
+    padding: 60px 20px;
+    color: #93c5fd;
+    border-bottom: 1px solid #1f2937;
+}
 
-    .quiz-btn {
-        display: inline-block;
-        margin-top: 20px;
-        background: #2563eb;
-        color: white;
-        padding: 12px 18px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: bold;
-    }
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
 
-    .quiz-btn:hover {
-        background: #1d4ed8;
-    }
+.card {
+    background: #111827;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 0 25px rgba(37,99,235,0.4);
+    transform: translateY(-2px);
+}
+
+h2 {
+    color: #93c5fd;
+}
+
+.fact {
+    background: #0f172a;
+    padding: 10px;
+    border-left: 4px solid #2563eb;
+    margin-top: 10px;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 0 15px #2563eb;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background: #0f0f0f;
+    color: white;
+}
+
+.post {
+    background: #111827;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border-left: 4px solid #2563eb;
+}
+
+.quiz-btn {
+    display: block;
+    text-align: center;
+    margin: 40px auto;
+}
 </style>
 </head>
 
 <body>
 
-<header>Plant Biology Blog</header>
+<nav>
+    <a href="#intro">Introduction</a>
+    <a href="#importance">Importance</a>
+    <a href="#gymno">Gymnosperms</a>
+    <a href="#angio">Angiosperms</a>
+</nav>
+
+<header>
+    <h1>Silent Heroes: Why Plants Matter</h1>
+</header>
 
 <div class="container">
 
-    <div class="post">
-        <div class="time" id="postTime"></div>
+<div class="card" id="intro">
+<h2>Introduction</h2>
+<p>Plants are one of the most important parts of life on Earth. They support almost every ecosystem by producing oxygen, food, and stability for the environment. Even though they are often overlooked, life would not exist in its current form without them.</p>
+</div>
 
-        <h2>Plant Reproduction Overview</h2>
+<div class="card" id="importance">
+<h2>Importance of Plants</h2>
+<p>Plants produce oxygen through photosynthesis, which is essential for living organisms. They also form the base of most food chains, meaning all animals depend on them directly or indirectly. Plants help regulate climate by absorbing carbon dioxide and storing carbon.</p>
 
-        <p>
-            Plants reproduce in two major groups: gymnosperms and angiosperms.
-            Gymnosperms produce naked seeds, usually found in cones, while angiosperms produce flowers and fruits.
-            These adaptations help plants survive in different environments and spread their seeds efficiently.
-        </p>
+<div class="fact">Roots help hold soil together and reduce erosion.</div>
+<div class="fact">Forests improve air quality by filtering pollutants naturally.</div>
+</div>
 
-        <p>
-            Angiosperms are the most diverse group of plants on Earth. They use animals, wind, and water to spread pollen and seeds.
-            Gymnosperms, on the other hand, mostly rely on wind for pollination.
-        </p>
+<div class="card" id="gymno">
+<h2>Gymnosperms</h2>
+<p>Gymnosperms are seed-producing plants that do not produce flowers or fruits. Their seeds are exposed, often found on cones. They are usually evergreen and adapted to harsh environments such as cold or dry regions.</p>
+</div>
 
-        <h3>Fun Fact</h3>
-        <p>
-            Some pine trees (gymnosperms) can live for over 4,000 years, making them some of the oldest living organisms on Earth.
-        </p>
+<div class="card" id="angio">
+<h2>Angiosperms</h2>
+<p>Angiosperms are flowering plants and the most diverse plant group on Earth. Their seeds are enclosed in fruits, which helps protect and spread them. They include trees, flowers, grasses, and most food crops humans rely on.</p>
+</div>
 
-        <h3>Example Plant</h3>
-        <p>
-            The sunflower is an angiosperm. It tracks the sun during the day and produces thousands of seeds inside its flower head.
-        </p>
+<div class="card">
+<h2>Create a Post</h2>
 
-        <a class="quiz-btn" href="quiz.html">Done reading? Take a quiz!</a>
-    </div>
+<input id="title" placeholder="Title">
+<textarea id="content" placeholder="Write your post"></textarea>
+<button onclick="addPost()">Publish</button>
+
+<div id="posts"></div>
+</div>
+
+<a class="quiz-btn" href="quiz.html">
+<button>Done reading? Take a quiz</button>
+</a>
 
 </div>
 
 <script>
-function timeAgo(date) {
-    const now = new Date();
-    const diff = Math.floor((now - date) / 1000);
+function addPost() {
+    let title = document.getElementById("title").value;
+    let content = document.getElementById("content").value;
 
-    if (diff < 60) return diff + "s ago";
-    if (diff < 3600) return Math.floor(diff / 60) + "m ago";
-    if (diff < 86400) return Math.floor(diff / 3600) + "h ago";
-    if (diff < 31536000) return Math.floor(diff / 86400) + "d ago";
-    return Math.floor(diff / 31536000) + "yr ago";
+    if (!title || !content) return;
+
+    let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+    posts.push({title, content});
+    localStorage.setItem("posts", JSON.stringify(posts));
+
+    loadPosts();
+
+    document.getElementById("title").value = "";
+    document.getElementById("content").value = "";
 }
 
-// store first visit time so it doesn't reset
-let savedTime = localStorage.getItem("postTime");
+function loadPosts() {
+    let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+    let container = document.getElementById("posts");
+    container.innerHTML = "";
 
-if (!savedTime) {
-    savedTime = new Date().toISOString();
-    localStorage.setItem("postTime", savedTime);
+    posts.forEach(p => {
+        container.innerHTML += `
+        <div class="post">
+            <h3>${p.title}</h3>
+            <p>${p.content}</p>
+        </div>`;
+    });
 }
 
-const postDate = new Date(savedTime);
-
-function updateTime() {
-    document.getElementById("postTime").innerText = timeAgo(postDate);
-}
-
-updateTime();
-setInterval(updateTime, 60000);
+loadPosts();
 </script>
 
 </body>
