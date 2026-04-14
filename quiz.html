@@ -51,13 +51,13 @@ button:hover {
     background: #1d4ed8;
 }
 
-/* FULL SCREEN CONFETTI (BEHIND POPUP) */
+/* CONFETTI NOW ABOVE EVERYTHING */
 .confetti {
     position: fixed;
     width: 8px;
     height: 8px;
     top: -10px;
-    z-index: 1; /* LOWER so it's behind popup */
+    z-index: 20000; /* HIGHER than popup */
     pointer-events: none;
     animation: fall linear forwards;
 }
@@ -69,7 +69,7 @@ button:hover {
     }
 }
 
-/* POPUP OVERLAY */
+/* POPUP */
 .popup {
     position: fixed;
     top: 0;
@@ -83,7 +83,7 @@ button:hover {
     z-index: 10000;
 }
 
-/* BIG 80% SCREEN CONTAINER */
+/* BIG CONTAINER */
 .popup-box {
     width: 80vw;
     height: 80vh;
