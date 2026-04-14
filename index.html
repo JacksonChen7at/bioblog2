@@ -1,201 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="icon" href="https://jacksonchen7at.github.io/bioblog/plant.png">
-<title>Plant Diversity: Gymnosperms & Angiosperms</title>
+<meta charset="UTF-8">
+<title>Plant Biology Blog</title>
 
 <style>
     body {
-        font-family: Arial;
         margin: 0;
-        background: #f4f8f4;
-    }
-
-    nav {
-        background: #2e7d32;
-        padding: 15px;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
-
-    nav a {
-        color: white;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.3s;
-        padding: 8px;
-        border-radius: 8px;
-    }
-
-    nav a:hover {
-        background: rgba(255,255,255,0.2);
-        box-shadow: 0 0 12px rgba(255,255,255,0.4);
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: #e5e7eb;
+        line-height: 1.6;
     }
 
     header {
-        background: linear-gradient(to right, #56ab2f, #a8e063);
-        color: white;
+        background: #111827;
+        padding: 25px;
         text-align: center;
-        padding: 50px 20px;
+        font-size: 28px;
+        font-weight: bold;
+        border-bottom: 1px solid #1f2937;
     }
 
-    section {
-        background: white;
-        margin: 20px;
+    .container {
+        width: 80%;
+        margin: auto;
         padding: 20px;
+    }
+
+    .card {
+        background: #111827;
+        padding: 20px;
+        margin: 20px 0;
         border-radius: 12px;
-
-        opacity: 0;
-        transform: translateY(40px);
-        transition: 0.8s ease;
-    }
-
-    section.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    section:hover {
-        box-shadow: 0 0 25px rgba(46, 125, 50, 0.45);
-        transform: translateY(-3px);
+        border: 1px solid #1f2937;
     }
 
     h2 {
-        color: #2e7d32;
+        color: #60a5fa;
     }
 
-    p {
-        line-height: 1.8;
-        color: #333;
+    .quiz-button {
+        display: block;
+        width: 240px;
+        margin: 40px auto;
+        padding: 14px;
+        background: #2563eb;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: 0.2s;
     }
 
-    .fact {
-        background: #e8f5e9;
-        padding: 10px;
-        border-left: 5px solid #2e7d32;
-        margin: 10px 0;
-        transition: 0.3s;
-    }
-
-    .fact:hover {
-        box-shadow: 0 0 15px rgba(46,125,50,0.4);
-        transform: translateY(-2px);
+    .quiz-button:hover {
+        background: #1d4ed8;
     }
 
     footer {
         text-align: center;
         padding: 20px;
-        color: gray;
+        font-size: 13px;
+        color: #9ca3af;
     }
 </style>
 </head>
 
 <body>
 
-<nav>
-    <a href="#intro">Intro</a>
-    <a href="#gymnosperms">Gymnosperms</a>
-    <a href="#angiosperms">Angiosperms</a>
-    <a href="#conclusion">Conclusion</a>
-</nav>
+<header>Plant Biology Blog: Gymnosperms and Angiosperms</header>
 
-<header>
-    <h1>Plant Diversity: Gymnosperms & Angiosperms</h1>
-    <p>Understanding how seed plants shape our world</p>
-</header>
+<div class="container">
 
-<section id="intro">
-    <h2>Introduction</h2>
-    <p>
-        Plants are one of the most important parts of life on Earth, even though we often overlook them in daily life. Over millions of years,
-        they have evolved into many different groups, each with unique features that help them survive in different environments.
-        Without plants, life as we know it would not exist because they form the base of most ecosystems.
-    </p>
-
-    <p>
-        Among the most important plant groups are gymnosperms and angiosperms. These two groups represent major steps in plant evolution,
-        especially in how they produce and protect seeds. Understanding them helps us see how plant life has adapted over time and why it is so important today.
-    </p>
-</section>
-
-<section id="gymnosperms">
-    <h2>Gymnosperms</h2>
-
-    <p>
-        Gymnosperms are seed-producing plants that do not form flowers or fruits. Instead, their seeds develop in cones that are often visible on the plant.
-        These plants are usually evergreen, meaning they keep their leaves throughout the year, which helps them survive in cold or dry environments.
-        Many gymnosperms are found in forests where temperatures can drop and conditions are harsh, yet they continue to grow and thrive.
-    </p>
-
-    <p>
-        Gymnosperms also play a major role in ecosystems because they provide shelter and food for many animals.
-        Their wood is widely used by humans for construction, furniture, and paper products.
-        Even though they are not as diverse as flowering plants, they are still extremely important for both nature and human life.
-    </p>
-
-    <div class="fact">
-        Fun Fact: Some pine trees can survive for over 1,000 years and continue growing slowly throughout their entire life.
+    <div class="card">
+        <h2>Gymnosperms</h2>
+        <p>
+            Gymnosperms are seed-producing plants that do not produce flowers or fruits.
+            Their seeds are exposed, usually found on cones. These plants are some of the oldest
+            seed plants on Earth and include conifers such as pine, spruce, and fir trees.
+            They are well adapted to cold and dry environments and can survive in harsh climates.
+        </p>
+        <p>
+            Reproduction in gymnosperms occurs when wind carries pollen from male cones to female cones.
+            After fertilization, seeds develop slowly and remain unprotected. Gymnosperms are important
+            ecologically because they provide habitats for wildlife and are widely used for wood and paper products.
+        </p>
     </div>
-</section>
 
-<section id="angiosperms">
-    <h2>Angiosperms</h2>
-
-    <p>
-        Angiosperms are flowering plants and represent the largest and most diverse group in the plant kingdom.
-        Unlike gymnosperms, they produce flowers and fruits, which protect their seeds and help them spread more efficiently.
-        This ability has allowed angiosperms to adapt to almost every environment on Earth, from deserts to rainforests.
-    </p>
-
-    <p>
-        Many of the plants humans depend on for food are angiosperms, including fruits, vegetables, grains, and legumes.
-        They are also important for ecosystems because they provide oxygen, food, and habitats for countless animals.
-        Their success is one of the main reasons ecosystems on Earth are so rich and diverse today.
-    </p>
-
-    <div class="fact">
-        Fun Fact: More than 80% of all plant species on Earth are angiosperms, making them the most successful plant group in history.
+    <div class="card">
+        <h2>Angiosperms</h2>
+        <p>
+            Angiosperms are flowering plants and represent the most diverse group in the plant kingdom.
+            Unlike gymnosperms, they produce flowers and fruits that protect their seeds, making them
+            highly successful across many environments including forests, deserts, and grasslands.
+        </p>
+        <p>
+            Angiosperms rely on wind, insects, animals, and water for pollination. After fertilization,
+            the ovary develops into a fruit that helps spread seeds. This group includes trees, grasses,
+            flowers, fruits, and vegetables that are essential to human life and ecosystems.
+        </p>
     </div>
-</section>
 
-<section id="conclusion">
-    <h2>Conclusion</h2>
+    <a class="quiz-button" href="quiz.html">
+        Done reading? Take the quiz
+    </a>
 
-    <p>
-        Gymnosperms and angiosperms are two very different but equally important groups of plants.
-        Gymnosperms are ancient and adapted for survival in tough environments, while angiosperms are highly diverse and dominate most ecosystems today.
-    </p>
+</div>
 
-    <p>
-        Together, they support life on Earth by providing oxygen, food, shelter, and materials that humans and animals depend on.
-        Learning about these plant groups helps us understand how nature is connected and why protecting plant life is so important for the future.
-    </p>
-</section>
-
-<footer>
-    <p>Biology Blog Project</p>
-</footer>
-
-<script>
-    const sections = document.querySelectorAll("section");
-
-    function showSections() {
-        const trigger = window.innerHeight * 0.85;
-
-        sections.forEach(sec => {
-            const top = sec.getBoundingClientRect().top;
-            if (top < trigger) {
-                sec.classList.add("visible");
-            }
-        });
-    }
-
-    window.addEventListener("scroll", showSections);
-    window.addEventListener("load", showSections);
-</script>
+<footer>Educational biology content website</footer>
 
 </body>
 </html>
