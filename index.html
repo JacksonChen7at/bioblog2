@@ -22,6 +22,7 @@ nav {
     gap: 20px;
     border-bottom: 1px solid #1f2937;
     position: relative;
+    align-items: center;
 }
 
 nav a {
@@ -36,7 +37,7 @@ nav a:hover {
     text-shadow: 0 0 10px #2563eb;
 }
 
-/* LOGIN BUTTON (top right) */
+/* CENTERED AUTH BUTTON FIX */
 #authBtn {
     position: absolute;
     right: 15px;
@@ -54,7 +55,7 @@ nav a:hover {
     box-shadow: 0 0 12px #2563eb;
 }
 
-/* LOGIN MODAL */
+/* MODAL */
 #authModal {
     display: none;
     position: fixed;
@@ -93,6 +94,15 @@ nav a:hover {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+}
+
+/* STATUS TEXT */
+#authMessage {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #93c5fd;
+    text-align: center;
+    min-height: 18px;
 }
 
 header {
@@ -183,11 +193,19 @@ input, textarea {
 <div id="authModal">
     <div class="authBox">
         <h3 id="authTitle">Sign In</h3>
+
         <input id="username" placeholder="Username">
         <input id="password" type="password" placeholder="Password">
+
         <button onclick="authAction()">Continue</button>
-        <button onclick="toggleAuthMode()">Switch Mode</button>
+
+        <button onclick="toggleAuthMode()" id="switchBtn">
+            Create an account
+        </button>
+
         <button onclick="closeAuth()">Close</button>
+
+        <div id="authMessage"></div>
     </div>
 </div>
 
@@ -195,38 +213,26 @@ input, textarea {
 
 <div class="card" id="intro">
 <h2>Introduction</h2>
-<p>
-Plants are essential living organisms that support nearly all life on Earth.
-</p>
-
-<div class="fact">Fun Fact: Plants were the first living organisms to colonize land over 400 million years ago.</div>
+<p>Plants are essential living organisms that support nearly all life on Earth.</p>
+<div class="fact">Fun Fact: Plants were the first organisms on land.</div>
 </div>
 
 <div class="card" id="importance">
 <h2>Importance of Plants</h2>
-<p>
-Plants maintain balance in nature and produce oxygen through photosynthesis.
-</p>
-
-<div class="fact">Fun Fact: One large tree can provide enough oxygen for 2–4 people every day.</div>
+<p>Plants produce oxygen and form the base of food chains.</p>
+<div class="fact">Fun Fact: One tree can support multiple humans with oxygen.</div>
 </div>
 
 <div class="card" id="gymno">
 <h2>Gymnosperms</h2>
-<p>
-Gymnosperms are seed-producing plants without flowers or fruits.
-</p>
-
-<div class="fact">Fun Fact: Some gymnosperms can live for over 1,000 years.</div>
+<p>Seed plants without flowers or fruits.</p>
+<div class="fact">Fun Fact: Some live over 1000 years.</div>
 </div>
 
 <div class="card" id="angio">
 <h2>Angiosperms</h2>
-<p>
-Angiosperms are flowering plants and the most diverse group.
-</p>
-
-<div class="fact">Fun Fact: Angiosperms make up about 80% of all plants on Earth.</div>
+<p>Flowering plants and most diverse group.</p>
+<div class="fact">Fun Fact: They make up most plant life on Earth.</div>
 </div>
 
 <div class="card">
@@ -246,6 +252,7 @@ Angiosperms are flowering plants and the most diverse group.
 </div>
 
 <script>
+
 // POSTS
 function addPost() {
     let title = document.getElementById("title").value;
@@ -277,7 +284,7 @@ function loadPosts() {
 loadPosts();
 
 
-// AUTH (FAKE LOGIN)
+// AUTH SYSTEM
 let authMode = "signin";
 
 function openAuth() {
@@ -286,32 +293,46 @@ function openAuth() {
 
 function closeAuth() {
     document.getElementById("authModal").style.display = "none";
+    document.getElementById("authMessage").innerText = "";
 }
 
 function toggleAuthMode() {
+    let title = document.getElementById("authTitle");
+    let msg = document.getElementById("authMessage");
+    let btn = document.getElementById("switchBtn");
+
     authMode = authMode === "signin" ? "signup" : "signin";
-    document.getElementById("authTitle").innerText =
-        authMode === "signin" ? "Sign In" : "Sign Up";
+
+    if (authMode === "signup") {
+        title.innerText = "Sign Up";
+        btn.innerText = "Already have an account? Sign in";
+    } else {
+        title.innerText = "Sign In";
+        btn.innerText = "Create an account";
+    }
+
+    msg.innerText = "";
 }
 
 function authAction() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
+    let msg = document.getElementById("authMessage");
 
     if (!username || !password) return;
 
     if (authMode === "signup") {
         localStorage.setItem("user_" + username, password);
-        alert("Account created!");
+        msg.innerText = "Account created successfully!";
     } else {
         let saved = localStorage.getItem("user_" + username);
+
         if (saved === password) {
             localStorage.setItem("loggedInUser", username);
-            alert("Signed in!");
-            closeAuth();
+            msg.innerText = "Signed in!";
             updateAuthButton();
         } else {
-            alert("Wrong username or password");
+            msg.innerText = "Wrong username or password.";
         }
     }
 }
@@ -323,6 +344,7 @@ function updateAuthButton() {
 }
 
 updateAuthButton();
+
 </script>
 
 </body>
