@@ -37,6 +37,7 @@ nav a:hover {
     text-shadow: 0 0 10px #2563eb;
 }
 
+/* BUTTON */
 #authBtn {
     position: absolute;
     right: 15px;
@@ -51,6 +52,7 @@ nav a:hover {
     font-size: 0.8rem;
 }
 
+/* MESSAGE */
 #message {
     position: fixed;
     top: 70px;
@@ -62,39 +64,6 @@ nav a:hover {
     border-radius: 8px;
     display: none;
     z-index: 999;
-}
-
-header {
-    background: #111827;
-    text-align: center;
-    padding: 60px 20px;
-    color: #93c5fd;
-    border-bottom: 1px solid #1f2937;
-}
-
-.container {
-    width: 90%;
-    max-width: 900px;
-    margin: auto;
-}
-
-.card {
-    background: #111827;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #1f2937;
-}
-
-h2 {
-    color: #93c5fd;
-}
-
-.fact {
-    background: #0f172a;
-    padding: 10px;
-    border-left: 4px solid #2563eb;
-    margin-top: 10px;
 }
 
 /* MODAL */
@@ -117,6 +86,11 @@ h2 {
     width: 360px;
 }
 
+/* LOGOUT MODAL */
+#logoutModal .authBox {
+    text-align: center;
+}
+
 button {
     background: #2563eb;
     color: white;
@@ -126,6 +100,7 @@ button {
     cursor: pointer;
     border-radius: 8px;
 }
+
 </style>
 </head>
 
@@ -146,7 +121,7 @@ button {
     <h1>Silent Heroes: Why Plants Matter</h1>
 </header>
 
-<!-- LOGIN -->
+<!-- LOGIN MODAL -->
 <div id="authModal" class="modal">
     <div class="authBox">
         <h2 id="authTitle">Sign In</h2>
@@ -160,78 +135,15 @@ button {
     </div>
 </div>
 
-<!-- LOGOUT -->
+<!-- NEW LOGOUT MODAL -->
 <div id="logoutModal" class="modal">
     <div class="authBox">
         <h2>Logout</h2>
         <p id="logoutText"></p>
 
-        <button onclick="confirmLogout()">Yes</button>
+        <button onclick="confirmLogout()">Yes, Logout</button>
         <button onclick="closeLogout()">No</button>
     </div>
-</div>
-
-<div class="container">
-
-<div class="card" id="intro">
-<h2>Introduction</h2>
-<p>Plants are one of the most important parts of life on Earth. They support almost every ecosystem by producing oxygen, food, and stability for the environment. Even though they are often overlooked, life would not exist in its current form without them.</p>
-</div>
-
-<div class="card" id="importance">
-<h2>Importance of Plants</h2>
-<p>Plants produce oxygen through photosynthesis, which is essential for living organisms. They also form the base of most food chains, meaning all animals depend on them directly or indirectly. Plants help regulate climate by absorbing carbon dioxide and storing carbon.</p>
-
-<div class="fact">Roots help hold soil together and reduce erosion.</div>
-<div class="fact">Forests improve air quality by filtering pollutants naturally.</div>
-</div>
-
-<div class="card" id="gymno">
-<h2>Gymnosperms (pick 2)</h2>
-
-<p>
-Gymnosperm 1: Pine Tree (Conifer)<br><br>
-Has needles instead of leaves<br>
-Produces cones instead of flowers<br>
-Very common and easy to explain<br>
-Good example: survives cold climates<br><br>
-
-Gymnosperm 2: Cycad<br><br>
-Looks like a palm tree but isn’t one<br>
-Very ancient (lived during dinosaur times)<br>
-Produces cones<br>
-Grows in tropical areas<br><br>
-
-Alternative: Ginkgo tree — fan-shaped leaves, very unique
-</p>
-
-<div class="fact">Fun Fact: Gymnosperms are some of the oldest seed plants on Earth.</div>
-</div>
-
-<div class="card" id="angio">
-<h2>Angiosperms</h2>
-
-<p>
-Monocot: Grass (or corn)<br><br>
-Long narrow leaves<br>
-Parallel veins<br>
-Roots spread out (fibrous roots)<br>
-Very common in everyday life<br><br>
-
-Dicot: Sunflower<br><br>
-Wide leaves<br>
-Veins branch out<br>
-Has flowers (pollination example)<br>
-Strong visual plant example<br><br>
-
-Alternative: rose, bean plant, oak tree<br><br>
-
-Best Combo: Pine, Cycad, Grass/Corn, Sunflower
-</p>
-
-<div class="fact">Fun Fact: Angiosperms make up most of Earth’s plant species.</div>
-</div>
-
 </div>
 
 <script>
@@ -301,7 +213,7 @@ function updateBtn() {
         user ? "Logout (" + user + ")" : "Sign In / Sign Up";
 }
 
-/* LOGOUT */
+/* LOGOUT (NEW SYSTEM) */
 function openLogout(user) {
     document.getElementById("logoutText").innerText =
         "Do you want to logout of " + user + "?";
