@@ -21,6 +21,7 @@ nav {
     justify-content: center;
     gap: 20px;
     border-bottom: 1px solid #1f2937;
+    position: relative;
 }
 
 nav a {
@@ -33,6 +34,65 @@ nav a {
 nav a:hover {
     color: #93c5fd;
     text-shadow: 0 0 10px #2563eb;
+}
+
+/* LOGIN BUTTON (top right) */
+#authBtn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#authBtn:hover {
+    box-shadow: 0 0 12px #2563eb;
+}
+
+/* LOGIN MODAL */
+#authModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.authBox {
+    background: #111827;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+}
+
+.authBox input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background: #0f0f0f;
+    color: white;
+}
+
+.authBox button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 header {
@@ -55,12 +115,6 @@ header {
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #1f2937;
-    transition: 0.3s;
-}
-
-.card:hover {
-    box-shadow: 0 0 25px rgba(37,99,235,0.4);
-    transform: translateY(-2px);
 }
 
 h2 {
@@ -82,11 +136,6 @@ button {
     margin-top: 10px;
     cursor: pointer;
     border-radius: 8px;
-    transition: 0.3s;
-}
-
-button:hover {
-    box-shadow: 0 0 15px #2563eb;
 }
 
 input, textarea {
@@ -122,49 +171,62 @@ input, textarea {
     <a href="#importance">Importance</a>
     <a href="#gymno">Gymnosperms</a>
     <a href="#angio">Angiosperms</a>
+
+    <button id="authBtn" onclick="openAuth()">Sign In / Sign Up</button>
 </nav>
 
 <header>
     <h1>Silent Heroes: Why Plants Matter</h1>
 </header>
 
+<!-- AUTH MODAL -->
+<div id="authModal">
+    <div class="authBox">
+        <h3 id="authTitle">Sign In</h3>
+        <input id="username" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+        <button onclick="authAction()">Continue</button>
+        <button onclick="toggleAuthMode()">Switch Mode</button>
+        <button onclick="closeAuth()">Close</button>
+    </div>
+</div>
+
 <div class="container">
 
 <div class="card" id="intro">
 <h2>Introduction</h2>
 <p>
-Plants are living organisms that quietly support nearly every form of life on Earth. Even though we don’t always notice them, they provide oxygen, food, and habitats that make survival possible. Every ecosystem depends on plants in some way, because they are the starting point of almost every food chain. Without them, animals and humans would not exist in the way we know today. Plants also help stabilize Earth’s atmosphere by absorbing carbon dioxide and releasing oxygen, which keeps the air balanced and breathable.
+Plants are essential living organisms that support nearly all life on Earth.
 </p>
 
-<div class="fact">Fun Fact: Plants were among the first organisms to move from water onto land hundreds of millions of years ago.</div>
+<div class="fact">Fun Fact: Plants were the first living organisms to colonize land over 400 million years ago.</div>
 </div>
 
 <div class="card" id="importance">
 <h2>Importance of Plants</h2>
 <p>
-Plants are essential for life because they power ecosystems through photosynthesis, a process where sunlight is converted into energy. In this process, plants release oxygen, which is necessary for humans and animals to survive. They also form the foundation of food chains, meaning even carnivores depend on plants indirectly. Beyond food and oxygen, plants regulate climate by absorbing carbon dioxide, help prevent soil erosion with their roots, and provide shelter for countless species of insects, birds, and mammals. Human life is also deeply connected to plants through agriculture, medicine, and materials like wood and cotton.
+Plants maintain balance in nature and produce oxygen through photosynthesis.
 </p>
 
-<div class="fact">Fun Fact: A single mature tree can absorb up to 48 pounds of carbon dioxide per year.</div>
-<div class="fact">Fun Fact: Forests act like Earth’s lungs by constantly recycling gases in the atmosphere.</div>
+<div class="fact">Fun Fact: One large tree can provide enough oxygen for 2–4 people every day.</div>
 </div>
 
 <div class="card" id="gymno">
 <h2>Gymnosperms</h2>
 <p>
-Gymnosperms are ancient seed-producing plants that do not grow flowers or fruits. Instead, they produce “naked seeds” that are usually found inside cones. One common example is the pine tree, which grows tall and has needle-like leaves designed to survive cold and dry environments. Another example is the cycad, a plant that looks similar to a palm tree but is actually much older in evolutionary history. Gymnosperms are often evergreen, meaning they stay green all year round, and they are commonly found in forests, mountains, and colder regions where other plants struggle to survive.
+Gymnosperms are seed-producing plants without flowers or fruits.
 </p>
 
-<div class="fact">Fun Fact: Some pine trees can survive for more than 1,000 years.</div>
+<div class="fact">Fun Fact: Some gymnosperms can live for over 1,000 years.</div>
 </div>
 
 <div class="card" id="angio">
 <h2>Angiosperms</h2>
 <p>
-Angiosperms are flowering plants and are the most diverse group in the plant kingdom. Unlike gymnosperms, they produce flowers and seeds that are enclosed inside fruits. This helps protect seeds and allows animals, wind, or water to spread them more effectively. A common monocot example is grass, which grows almost everywhere and forms the base of many human food sources like rice, wheat, and corn. A dicot example is the sunflower, known for its large yellow flower that follows the sun throughout the day. Angiosperms are found in almost every habitat and include everything from tiny flowers to large fruit-bearing trees.
+Angiosperms are flowering plants and the most diverse group.
 </p>
 
-<div class="fact">Fun Fact: Around 80% of all plant species on Earth are angiosperms.</div>
+<div class="fact">Fun Fact: Angiosperms make up about 80% of all plants on Earth.</div>
 </div>
 
 <div class="card">
@@ -178,12 +240,13 @@ Angiosperms are flowering plants and are the most diverse group in the plant kin
 </div>
 
 <a class="quiz-btn" href="quiz.html">
-<button>Done reading? Check your understanding by taking a quiz!</button>
+<button>Take Quiz</button>
 </a>
 
 </div>
 
 <script>
+// POSTS
 function addPost() {
     let title = document.getElementById("title").value;
     let content = document.getElementById("content").value;
@@ -195,9 +258,6 @@ function addPost() {
     localStorage.setItem("posts", JSON.stringify(posts));
 
     loadPosts();
-
-    document.getElementById("title").value = "";
-    document.getElementById("content").value = "";
 }
 
 function loadPosts() {
@@ -215,6 +275,54 @@ function loadPosts() {
 }
 
 loadPosts();
+
+
+// AUTH (FAKE LOGIN)
+let authMode = "signin";
+
+function openAuth() {
+    document.getElementById("authModal").style.display = "flex";
+}
+
+function closeAuth() {
+    document.getElementById("authModal").style.display = "none";
+}
+
+function toggleAuthMode() {
+    authMode = authMode === "signin" ? "signup" : "signin";
+    document.getElementById("authTitle").innerText =
+        authMode === "signin" ? "Sign In" : "Sign Up";
+}
+
+function authAction() {
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    if (!username || !password) return;
+
+    if (authMode === "signup") {
+        localStorage.setItem("user_" + username, password);
+        alert("Account created!");
+    } else {
+        let saved = localStorage.getItem("user_" + username);
+        if (saved === password) {
+            localStorage.setItem("loggedInUser", username);
+            alert("Signed in!");
+            closeAuth();
+            updateAuthButton();
+        } else {
+            alert("Wrong username or password");
+        }
+    }
+}
+
+function updateAuthButton() {
+    let user = localStorage.getItem("loggedInUser");
+    document.getElementById("authBtn").innerText =
+        user ? "Logout (" + user + ")" : "Sign In / Sign Up";
+}
+
+updateAuthButton();
 </script>
 
 </body>
