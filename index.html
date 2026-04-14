@@ -2,249 +2,135 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Plant Biology Blog + Quiz</title>
+<title>Plant Biology Quiz</title>
+
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0b0b0f;
-    color: #eaeaea;
+    background: #0d0f10;
+    color: #e6e6e6;
+    line-height: 1.6;
 }
 
-/* NAV HEADER */
 header {
-    padding: 20px;
-    text-align: center;
     background: #111;
+    padding: 25px;
+    text-align: center;
     font-size: 26px;
     font-weight: bold;
-    letter-spacing: 1px;
+    border-bottom: 1px solid #1f6b3a;
+    color: #7CFF9B;
 }
 
-/* BLOG CONTAINER */
 .container {
-    max-width: 900px;
+    width: 80%;
     margin: auto;
-    padding: 30px;
-}
-
-h2 {
-    color: #ffffff;
-    border-left: 4px solid #ffffff;
-    padding-left: 10px;
-}
-
-p {
-    line-height: 1.8;
-    font-size: 17px;
-    color: #cfcfcf;
-}
-
-/* CARD STYLE */
-.card {
-    background: #15151c;
     padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
 
-/* QUIZ BUTTON */
+.question {
+    background: #151a1c;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 1px solid #1f2a2e;
+    transition: 0.3s;
+}
+
+.question:hover {
+    box-shadow: 0 0 20px rgba(46,139,87,0.4);
+}
+
+input[type="radio"] {
+    accent-color: #2e8b57;
+}
+
 button {
-    padding: 14px 20px;
-    background: #ffffff;
-    color: #000;
+    background: #1f6b3a;
+    color: white;
     border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
-    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
     transition: 0.3s;
 }
 
 button:hover {
-    background: #cccccc;
+    box-shadow: 0 0 15px #2e8b57;
 }
 
-/* QUIZ PAGE */
-#quizPage {
-    display: none;
-    padding: 30px;
-    max-width: 800px;
-    margin: auto;
-}
-
-.question {
-    background: #15151c;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 10px;
-}
-
-.option {
-    display: block;
-    margin: 8px 0;
-    cursor: pointer;
-}
-
-/* FEEDBACK */
-.correct {
-    color: #00ff88;
-}
-.wrong {
-    color: #ff4d4d;
-}
-
-/* SCORE ANIMATION */
-#scoreBox {
-    font-size: 22px;
+.result {
+    text-align: center;
+    font-size: 20px;
     margin-top: 20px;
-}
-
-.glow {
-    animation: glow 1s infinite alternate;
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 5px #fff; }
-    to { text-shadow: 0 0 20px #00ff88; }
+    color: #7CFF9B;
 }
 </style>
 </head>
 
 <body>
 
-<header>Plant Biology Blog</header>
+<header>Plant Biology Quiz</header>
 
-<div id="blogPage" class="container">
+<div class="container">
 
-    <div class="card">
-        <h2>Gymnosperms</h2>
-        <p>
-        Gymnosperms are a group of seed-producing plants that do not form flowers or fruits. Instead, their seeds are exposed, often found on cones or similar structures. These plants are some of the oldest on Earth and include species like pine trees, spruce, and firs. They are well adapted to cold and dry environments due to their needle-like leaves, which reduce water loss. Gymnosperms reproduce using pollen that is carried by wind, allowing fertilization without the need for water. Their strong woody trunks help them survive harsh conditions and grow to impressive heights.
-        </p>
+    <div class="question">
+        <p>1. What do gymnosperms produce?</p>
+        <input type="radio" name="q1" value="0"> Fruits<br>
+        <input type="radio" name="q1" value="1"> Naked seeds<br>
     </div>
 
-    <div class="card">
-        <h2>Angiosperms</h2>
-        <p>
-        Angiosperms are flowering plants and represent the most diverse group in the plant kingdom. Unlike gymnosperms, they produce seeds that are enclosed within fruits, which helps protect the seeds and aids in dispersal. Flowers play a key role in reproduction by attracting pollinators such as bees, birds, and butterflies. Angiosperms can be found in nearly every environment on Earth, from forests to deserts and aquatic ecosystems. They are essential to human life, providing food, oxygen, medicine, and materials. Their evolutionary success is due to their efficient reproductive systems and ability to adapt to different habitats.
-        </p>
+    <div class="question">
+        <p>2. Angiosperms are also called:</p>
+        <input type="radio" name="q2" value="1"> Flowering plants<br>
+        <input type="radio" name="q2" value="0"> Cone plants<br>
     </div>
 
-    <div style="text-align:center; margin-top:30px;">
-        <button onclick="goQuiz()">Done reading? Take a quiz!</button>
+    <div class="question">
+        <p>3. Gymnosperm seeds are found on:</p>
+        <input type="radio" name="q3" value="1"> Cones<br>
+        <input type="radio" name="q3" value="0"> Fruits<br>
     </div>
 
-</div>
+    <div class="question">
+        <p>4. What helps angiosperms spread seeds?</p>
+        <input type="radio" name="q4" value="1"> Fruits<br>
+        <input type="radio" name="q4" value="0"> Rocks<br>
+    </div>
 
-<!-- QUIZ PAGE -->
-<div id="quizPage">
+    <div class="question">
+        <p>5. Which group is most diverse?</p>
+        <input type="radio" name="q5" value="1"> Angiosperms<br>
+        <input type="radio" name="q5" value="0"> Gymnosperms<br>
+    </div>
 
-    <h2>Quiz Time</h2>
+    <div class="question">
+        <p>6. Gymnosperms mostly rely on:</p>
+        <input type="radio" name="q6" value="1"> Wind<br>
+        <input type="radio" name="q6" value="0"> Animals only<br>
+    </div>
 
-    <div id="questions"></div>
+    <button onclick="checkScore()">Submit Quiz</button>
 
-    <div id="scoreBox"></div>
-
-    <button onclick="submitQuiz()">Submit Quiz</button>
-    <button onclick="restartQuiz()">Try Again</button>
+    <div class="result" id="result"></div>
 
 </div>
 
 <script>
-
-const quizData = [
-    {
-        q: "What do gymnosperms produce instead of flowers?",
-        options: ["Fruits", "Cones", "Leaves", "Roots"],
-        answer: 1
-    },
-    {
-        q: "Where are gymnosperm seeds found?",
-        options: ["Inside fruits", "Inside flowers", "On cones", "In soil"],
-        answer: 2
-    },
-    {
-        q: "What is a key feature of angiosperms?",
-        options: ["No seeds", "Flowers", "Needles", "Spores only"],
-        answer: 1
-    },
-    {
-        q: "What protects angiosperm seeds?",
-        options: ["Air", "Cones", "Fruit", "Bark"],
-        answer: 2
-    },
-    {
-        q: "How are gymnosperms mostly pollinated?",
-        options: ["Insects", "Water", "Wind", "Animals"],
-        answer: 2
-    },
-    {
-        q: "Which group is more diverse?",
-        options: ["Gymnosperms", "Angiosperms", "Ferns", "Mosses"],
-        answer: 1
-    }
-];
-
-function goQuiz() {
-    document.getElementById("blogPage").style.display = "none";
-    document.getElementById("quizPage").style.display = "block";
-    loadQuiz();
-}
-
-function loadQuiz() {
-    let container = document.getElementById("questions");
-    container.innerHTML = "";
-
-    quizData.forEach((item, index) => {
-        let div = document.createElement("div");
-        div.className = "question";
-
-        let html = `<p>${index+1}. ${item.q}</p>`;
-
-        item.options.forEach((opt, i) => {
-            html += `
-            <label class="option">
-                <input type="radio" name="q${index}" value="${i}">
-                ${opt}
-            </label>`;
-        });
-
-        div.innerHTML = html;
-        container.appendChild(div);
-    });
-}
-
-function submitQuiz() {
+function checkScore() {
     let score = 0;
 
-    quizData.forEach((item, index) => {
-        let selected = document.querySelector(`input[name="q${index}"]:checked`);
-        let questionDiv = document.getElementsByClassName("question")[index];
-
-        if (selected && parseInt(selected.value) === item.answer) {
-            score++;
-            questionDiv.classList.add("correct");
-            questionDiv.classList.remove("wrong");
-        } else {
-            questionDiv.classList.add("wrong");
-            questionDiv.classList.remove("correct");
-        }
-    });
-
-    let scoreBox = document.getElementById("scoreBox");
-    scoreBox.innerHTML = `Score: ${score} / ${quizData.length}`;
-
-    if (score === quizData.length) {
-        scoreBox.classList.add("glow");
+    for (let i = 1; i <= 6; i++) {
+        let answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score += parseInt(answer.value);
     }
-}
 
-function restartQuiz() {
-    loadQuiz();
-    document.getElementById("scoreBox").innerHTML = "";
+    document.getElementById("result").innerText =
+        "Your score: " + score + " / 6";
 }
-
 </script>
 
 </body>
