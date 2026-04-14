@@ -98,6 +98,7 @@ h2 {
     color: #93c5fd;
 }
 
+/* ✅ BLUE VERTICAL LINE FOR ALL FUN FACTS */
 .fact {
     background: #0f172a;
     padding: 10px;
@@ -105,6 +106,7 @@ h2 {
     margin-top: 10px;
 }
 
+/* BUTTONS */
 button {
     background: #2563eb;
     color: white;
@@ -144,7 +146,7 @@ input, textarea {
     margin: 40px auto;
 }
 
-/* MODAL */
+/* MODAL BACKDROP */
 .modal {
     display: none;
     position: fixed;
@@ -157,13 +159,21 @@ input, textarea {
     align-items: center;
 }
 
+/* ✅ SIGN IN / SIGN UP BOX (20% BIGGER + CENTERED) */
 .authBox {
     background: #111827;
-    padding: 25px;
+    padding: 30px;            /* bigger */
     border-radius: 12px;
-    width: 360px;
+    width: 430px;             /* ~20% bigger than 360px */
+    max-width: 90%;
 }
 
+/* logout box same sizing */
+#logoutModal .authBox {
+    width: 430px;
+}
+
+/* inputs */
 .authBox input {
     width: 100%;
     padding: 10px;
@@ -196,6 +206,7 @@ input, textarea {
     <h1>Silent Heroes: Why Plants Matter</h1>
 </header>
 
+<!-- SIGN IN MODAL -->
 <div id="authModal" class="modal">
     <div class="authBox">
         <h2 id="authTitle">Sign In</h2>
@@ -207,7 +218,7 @@ input, textarea {
     </div>
 </div>
 
-<!-- NEW LOGOUT MODAL -->
+<!-- LOGOUT MODAL -->
 <div id="logoutModal" class="modal">
     <div class="authBox">
         <h2 id="logoutText">Do you want to logout?</h2>
@@ -276,7 +287,6 @@ function showMessage(text) {
     setTimeout(() => m.style.display = "none", 2500);
 }
 
-// POSTS
 function addPost() {
     let title = document.getElementById("title").value;
     let content = document.getElementById("content").value;
@@ -305,7 +315,6 @@ loadPosts();
 
 let mode = "signin";
 
-// AUTH
 function authButtonAction() {
     let user = localStorage.getItem("loggedInUser");
     if (user) {
@@ -341,7 +350,6 @@ function authAction() {
         showMessage("Account created");
     } else {
         let saved = localStorage.getItem("user_" + u);
-
         if (saved === p) {
             localStorage.setItem("loggedInUser", u);
             closeAuth();
@@ -359,7 +367,6 @@ function updateBtn() {
         user ? "Logout (" + user + ")" : "Sign In / Sign Up";
 }
 
-// LOGOUT (NO confirm())
 let pendingUser = null;
 
 function openLogout(user) {
@@ -373,15 +380,12 @@ function confirmLogout() {
     localStorage.removeItem("loggedInUser");
     updateBtn();
     showMessage("You are logged out");
-
     document.getElementById("logoutModal").style.display = "none";
-    pendingUser = null;
 }
 
 function cancelLogout() {
     document.getElementById("logoutModal").style.display = "none";
     document.getElementById("authModal").style.display = "flex";
-    pendingUser = null;
 }
 
 updateBtn();
