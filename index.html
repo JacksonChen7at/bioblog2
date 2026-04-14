@@ -12,6 +12,7 @@ body {
     color: #e5e7eb;
 }
 
+/* NAVBAR */
 nav {
     background: #111827;
     padding: 15px;
@@ -22,7 +23,6 @@ nav {
     gap: 20px;
     border-bottom: 1px solid #1f2937;
     align-items: center;
-    position: relative;
 }
 
 nav a {
@@ -37,21 +37,7 @@ nav a:hover {
     text-shadow: 0 0 10px #2563eb;
 }
 
-/* FIXED BUTTON CENTERING */
-#authBtn {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 10px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* MESSAGE BAR (NO ALERTS) */
+/* MESSAGE */
 #message {
     position: fixed;
     top: 70px;
@@ -65,6 +51,7 @@ nav a:hover {
     z-index: 999;
 }
 
+/* HEADER */
 header {
     background: #111827;
     text-align: center;
@@ -73,6 +60,7 @@ header {
     border-bottom: 1px solid #1f2937;
 }
 
+/* CONTAINER */
 .container {
     width: 90%;
     max-width: 900px;
@@ -112,7 +100,6 @@ button {
     margin-top: 10px;
     cursor: pointer;
     border-radius: 8px;
-    transition: 0.3s;
 }
 
 button:hover {
@@ -143,38 +130,36 @@ input, textarea {
     margin: 40px auto;
 }
 
-/* MODAL */
-.modal {
+/* AUTH SECTION (NEW PAGE STYLE) */
+#authSection {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.75);
-    justify-content: center;
-    align-items: center;
+    padding: 60px 0;
 }
 
 .authBox {
     background: #111827;
-    padding: 25px;
+    width: 480px; /* 20% bigger */
+    margin: auto;
+    padding: 30px;
     border-radius: 12px;
-    width: 360px;
+    border: 1px solid #1f2937;
+    text-align: center;
 }
 
 .authBox input {
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 12px;
+    margin-top: 12px;
     border-radius: 8px;
     border: 1px solid #1f2937;
     background: #0f0f0f;
     color: white;
 }
 
-.authBox button {
-    width: 100%;
+.authSwitch {
+    margin-top: 15px;
+    color: #93c5fd;
+    cursor: pointer;
 }
 </style>
 </head>
@@ -186,8 +171,7 @@ input, textarea {
     <a href="#importance">Importance</a>
     <a href="#gymno">Gymnosperms</a>
     <a href="#angio">Angiosperms</a>
-
-    <button id="authBtn" onclick="authButtonAction()">Sign In / Sign Up</button>
+    <a href="#auth" onclick="openAuth()">Sign In</a>
 </nav>
 
 <div id="message"></div>
@@ -196,8 +180,8 @@ input, textarea {
     <h1>Silent Heroes: Why Plants Matter</h1>
 </header>
 
-<!-- AUTH -->
-<div id="authModal" class="modal">
+<!-- AUTH PAGE -->
+<div id="authSection">
     <div class="authBox">
         <h2 id="authTitle">Sign In</h2>
 
@@ -205,12 +189,17 @@ input, textarea {
         <input id="password" type="password" placeholder="Password">
 
         <button onclick="authAction()">Continue</button>
-        <button onclick="toggleMode()" id="switchBtn">Create an account</button>
-        <button onclick="closeAuth()">Close</button>
+
+        <div class="authSwitch" onclick="toggleMode()" id="switchText">
+            Create an account
+        </div>
+
+        <div class="authSwitch" onclick="closeAuth()">Back to Blog</div>
     </div>
 </div>
 
-<div class="container">
+<!-- BLOG -->
+<div class="container" id="blog">
 
 <div class="card" id="intro">
 <h2>Introduction</h2>
@@ -253,6 +242,8 @@ input, textarea {
 
 <script>
 
+let mode = "signin";
+
 function showMessage(text) {
     let m = document.getElementById("message");
     m.innerText = text;
@@ -260,7 +251,54 @@ function showMessage(text) {
     setTimeout(() => m.style.display = "none", 2500);
 }
 
-// POSTS
+/* NAV AUTH */
+function openAuth() {
+    document.getElementById("blog").style.display = "none";
+    document.getElementById("authSection").style.display = "block";
+}
+
+function closeAuth() {
+    document.getElementById("authSection").style.display = "none";
+    document.getElementById("blog").style.display = "block";
+}
+
+/* MODE SWITCH */
+function toggleMode() {
+    mode = (mode === "signin") ? "signup" : "signin";
+
+    document.getElementById("authTitle").innerText =
+        mode === "signin" ? "Sign In" : "Sign Up";
+
+    document.getElementById("switchText").innerText =
+        mode === "signin"
+        ? "Create an account"
+        : "Already have an account? Sign in";
+}
+
+/* AUTH */
+function authAction() {
+    let u = document.getElementById("username").value;
+    let p = document.getElementById("password").value;
+
+    if (!u || !p) return;
+
+    if (mode === "signup") {
+        localStorage.setItem("user_" + u, p);
+        showMessage("Account created");
+    } else {
+        let saved = localStorage.getItem("user_" + u);
+
+        if (saved === p) {
+            localStorage.setItem("loggedInUser", u);
+            showMessage("Logged in as " + u);
+            closeAuth();
+        } else {
+            showMessage("Wrong username or password");
+        }
+    }
+}
+
+/* POSTS */
 function addPost() {
     let title = document.getElementById("title").value;
     let content = document.getElementById("content").value;
@@ -289,77 +327,6 @@ function loadPosts() {
 }
 
 loadPosts();
-
-
-// AUTH
-let mode = "signin";
-
-function authButtonAction() {
-    let user = localStorage.getItem("loggedInUser");
-
-    if (user) {
-        openLogout(user);
-    } else {
-        document.getElementById("authModal").style.display = "flex";
-    }
-}
-
-function closeAuth() {
-    document.getElementById("authModal").style.display = "none";
-}
-
-function toggleMode() {
-    mode = mode === "signin" ? "signup" : "signin";
-
-    document.getElementById("authTitle").innerText =
-        mode === "signin" ? "Sign In" : "Sign Up";
-
-    document.getElementById("switchBtn").innerText =
-        mode === "signin"
-        ? "Create an account"
-        : "Already have an account? Sign in";
-}
-
-function authAction() {
-    let u = document.getElementById("username").value;
-    let p = document.getElementById("password").value;
-
-    if (!u || !p) return;
-
-    if (mode === "signup") {
-        localStorage.setItem("user_" + u, p);
-        showMessage("Account created");
-    } else {
-        let saved = localStorage.getItem("user_" + u);
-
-        if (saved === p) {
-            localStorage.setItem("loggedInUser", u);
-            closeAuth();
-            updateBtn();
-            showMessage("Logged in successfully");
-        } else {
-            showMessage("Wrong username or password");
-        }
-    }
-}
-
-function updateBtn() {
-    let user = localStorage.getItem("loggedInUser");
-    document.getElementById("authBtn").innerText =
-        user ? "Logout (" + user + ")" : "Sign In / Sign Up";
-}
-
-// LOGOUT
-function openLogout(user) {
-    let ok = confirm("Do you want to logout of " + user + "?");
-    if (ok) {
-        localStorage.removeItem("loggedInUser");
-        updateBtn();
-        showMessage("You are logged out");
-    }
-}
-
-updateBtn();
 
 </script>
 
