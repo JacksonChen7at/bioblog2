@@ -1,135 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Plant Blog</title>
+<title>Silent Heroes: Why Plants Matter</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #0b1220;
-        color: #e5e7eb;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1220;
+    color: #e5e7eb;
+}
 
-    header {
-        background: #111827;
-        padding: 25px;
-        text-align: center;
-        font-size: 26px;
-        font-weight: bold;
-        border-bottom: 1px solid #1f2937;
-    }
+nav {
+    background: #111827;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 1px solid #1f2937;
+}
 
-    .container {
-        width: 80%;
-        margin: auto;
-        padding: 20px;
-    }
+nav a {
+    color: #cfcfcf;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-    .post {
-        background: #111827;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #1f2937;
-        margin-top: 20px;
-    }
+nav a:hover {
+    color: #93c5fd;
+    text-shadow: 0 0 10px #2563eb;
+}
 
-    .time {
-        color: #93c5fd;
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
+header {
+    background: #111827;
+    text-align: center;
+    padding: 60px 20px;
+    color: #93c5fd;
+    border-bottom: 1px solid #1f2937;
+}
 
-    .quiz-btn {
-        display: inline-block;
-        margin-top: 20px;
-        background: #2563eb;
-        color: white;
-        padding: 12px 18px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: bold;
-    }
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
 
-    .quiz-btn:hover {
-        background: #1d4ed8;
-    }
+.card {
+    background: #111827;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 0 25px rgba(37,99,235,0.4);
+    transform: translateY(-2px);
+}
+
+h2 {
+    color: #93c5fd;
+}
+
+.fact {
+    background: #0f172a;
+    padding: 10px;
+    border-left: 4px solid #2563eb;
+    margin-top: 10px;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 0 15px #2563eb;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background: #0f0f0f;
+    color: white;
+}
+
+.post {
+    background: #111827;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border-left: 4px solid #2563eb;
+}
+
+.quiz-btn {
+    display: block;
+    text-align: center;
+    margin: 40px auto;
+}
 </style>
 </head>
 
 <body>
 
-<header>Plant Biology Blog</header>
+<nav>
+    <a href="#intro">Introduction</a>
+    <a href="#importance">Importance</a>
+    <a href="#gymno">Gymnosperms</a>
+    <a href="#angio">Angiosperms</a>
+</nav>
+
+<header>
+    <h1>Silent Heroes: Why Plants Matter</h1>
+</header>
 
 <div class="container">
 
-    <div class="post">
-        <div class="time" id="postTime"></div>
+<div class="card" id="intro">
+<h2>Introduction</h2>
+<p>
+Plants are essential living organisms that support nearly all life on Earth. They provide oxygen, food, shelter, and stability to ecosystems across the globe. Without plants, animals and humans would not survive because the food chain begins with them. Plants also help regulate the atmosphere by absorbing carbon dioxide and releasing oxygen, making Earth suitable for life.
+</p>
+</div>
 
-        <h2>Gymnosperms and Angiosperms Explained</h2>
+<div class="card" id="importance">
+<h2>Importance of Plants</h2>
+<p>
+Plants play a critical role in maintaining balance in nature. Through photosynthesis, they convert sunlight into energy while producing oxygen as a byproduct. This oxygen is necessary for almost all living organisms. Plants also form the base of food chains, meaning every animal either directly or indirectly depends on them. In addition, plants help reduce climate change by absorbing carbon dioxide and storing carbon in their tissues. They also prevent soil erosion, improve air quality, and provide habitats for countless species.
+</p>
 
-        <p>
-            Plants are generally divided into two major groups: gymnosperms and angiosperms. Gymnosperms are plants that produce “naked seeds,” meaning their seeds are not enclosed inside a fruit. Instead, they are usually found on cones. These plants are some of the oldest types of plants on Earth and are well adapted to survive in harsh environments such as cold forests and mountainous regions. Angiosperms, on the other hand, are flowering plants. They produce seeds that are protected inside fruits, which helps with seed dispersal through animals, wind, and water. Because of this adaptation, angiosperms are the most diverse group of plants on the planet.
-        </p>
+<div class="fact">Roots help hold soil together and reduce erosion.</div>
+<div class="fact">Forests act as natural air filters by removing pollutants from the atmosphere.</div>
+</div>
 
-        <h3>Gymnosperm: Pine Tree (Pinus)</h3>
-        <p>
-            The pine tree, scientifically known as Pinus, is a classic example of a gymnosperm. Pine trees are tall evergreen plants with long, thin needle-like leaves that help reduce water loss in cold or dry environments. Instead of producing flowers or fruits, pine trees reproduce using cones. Male cones produce pollen, while female cones contain ovules that eventually develop into seeds. These seeds are exposed on the surface of the cone scales, which is why they are called “naked seeds.” Pine trees are commonly found in forests across colder regions and mountainous areas, where they can survive snow, wind, and nutrient-poor soil conditions due to their strong adaptability.
-        </p>
+<div class="card" id="gymno">
+<h2>Gymnosperms</h2>
+<p>
+Gymnosperms are a group of seed-producing plants that do not produce flowers or fruits. Instead, their seeds are exposed and are usually found on cones. These plants are often evergreen and are well adapted to survive in harsh environments such as cold forests, mountains, and dry regions. Gymnosperms are some of the oldest plant groups on Earth and have existed for millions of years.
+</p>
 
-        <h3>Gymnosperm: Cycad</h3>
-        <p>
-            Cycads belong to an ancient group of gymnosperms known as Cycadophyta. Although they may look similar to palm trees, they are not closely related. Cycads have thick, woody trunks and large, stiff, feather-like leaves that grow in a circular pattern at the top. Like all gymnosperms, they reproduce using cones rather than flowers. Cycads are typically found in warm tropical and subtropical regions where the climate remains stable throughout the year. One interesting fact about cycads is that they are considered living fossils because they have existed since the time of dinosaurs and have changed very little over millions of years.
-        </p>
+<p><b>Gymnosperm 1: Pine Tree (Pinus)</b></p>
+<p>
+The pine tree is a tall evergreen plant with needle-like leaves that help reduce water loss. It produces seeds inside cones instead of flowers or fruits. Pine trees are commonly found in cold or mountainous regions where they survive snow, wind, and poor soil conditions. A fun fact about pine trees is that they stay green all year long because their needles are specially adapted to resist freezing temperatures.
+</p>
 
-        <h3>Angiosperm: Grass (Poaceae)</h3>
-        <p>
-            Grass is one of the most widespread and important angiosperms on Earth. It belongs to the plant family Poaceae and is found in almost every ecosystem, including fields, forests, deserts, and lawns. Grass has long, narrow leaves with veins that run parallel to each other, which helps in efficient water transport. Its root system is fibrous, meaning it spreads out widely underground, helping prevent soil erosion. Grass reproduces through flowers, although they are often small and not easily noticed. Many of the world’s major crops, including wheat, rice, and corn, are actually types of grass, making this plant group extremely important for human survival.
-        </p>
+<p><b>Gymnosperm 2: Cycad</b></p>
+<p>
+Cycads are ancient plants that look similar to palm trees but are not related to them. They have thick trunks and stiff leaves arranged in a crown at the top. Cycads reproduce using cones and are usually found in tropical and subtropical regions. A very interesting fact is that cycads existed during the time of dinosaurs, making them one of the oldest surviving plant groups on Earth.
+</p>
+</div>
 
-        <h3>Angiosperm: Sunflower (Helianthus annuus)</h3>
-        <p>
-            The sunflower, scientifically called Helianthus annuus, is a well-known flowering plant and a member of the angiosperm group. Sunflowers are recognized for their large yellow flower heads and their ability to track the sun throughout the day, a behavior known as heliotropism. Their leaves are broad with branching veins, and their seeds develop inside the flower head after pollination. Sunflowers grow best in sunny environments with fertile soil and are commonly found in gardens and agricultural fields. A single sunflower can produce hundreds of seeds, which are used as food for both humans and animals.
-        </p>
+<div class="card" id="angio">
+<h2>Angiosperms</h2>
+<p>
+Angiosperms are flowering plants and represent the most diverse group of plants in the world. Unlike gymnosperms, their seeds are enclosed inside fruits, which helps protect them and allows for easier dispersal by animals, wind, or water. Angiosperms include everything from trees and flowers to grasses and important food crops.
+</p>
 
-        <h3>Conclusion</h3>
-        <p>
-            Plants show an incredible variety of adaptations that allow them to survive in different environments. Gymnosperms like pine trees and cycads reproduce using cones and exposed seeds, while angiosperms like grass and sunflowers produce flowers and protect their seeds inside fruits. These differences in reproduction and structure have allowed angiosperms to become the most diverse plant group on Earth. Understanding these plant types helps us appreciate how ecosystems function and how plants support life through food production, oxygen creation, and environmental balance.
-        </p>
+<p><b>Monocot: Grass (Poaceae)</b></p>
+<p>
+Grass is a monocot plant that has long, narrow leaves with parallel veins. It has a fibrous root system that spreads widely underground, helping prevent soil erosion. Grass is found almost everywhere on Earth, from lawns to open fields. Many important crops such as wheat, rice, and corn are actually types of grass, making this plant extremely important for human life.
+</p>
 
-        <a class="quiz-btn" href="quiz.html">Done reading? Take a quiz!</a>
-    </div>
+<p><b>Dicot: Sunflower (Helianthus annuus)</b></p>
+<p>
+The sunflower is a bright flowering plant known for its large yellow flower head that follows the movement of the sun. It has broad leaves with branching veins and produces seeds inside its flower head. Sunflowers grow best in sunny environments with rich soil. A fun fact is that a single sunflower can produce hundreds of seeds that are eaten by both humans and animals.
+</p>
+</div>
+
+<div class="card">
+<h2>Create a Post</h2>
+
+<input id="title" placeholder="Title">
+<textarea id="content" placeholder="Write your post"></textarea>
+<button onclick="addPost()">Publish</button>
+
+<div id="posts"></div>
+</div>
+
+<a class="quiz-btn" href="quiz.html">
+<button>Done reading? Take a quiz</button>
+</a>
 
 </div>
 
 <script>
-function timeAgo(date) {
-    const now = new Date();
-    const diff = Math.floor((now - date) / 1000);
+function addPost() {
+    let title = document.getElementById("title").value;
+    let content = document.getElementById("content").value;
 
-    if (diff < 60) return diff + "s ago";
-    if (diff < 3600) return Math.floor(diff / 60) + "m ago";
-    if (diff < 86400) return Math.floor(diff / 3600) + "h ago";
-    if (diff < 31536000) return Math.floor(diff / 86400) + "d ago";
-    return Math.floor(diff / 31536000) + "yr ago";
+    if (!title || !content) return;
+
+    let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+    posts.push({title, content});
+    localStorage.setItem("posts", JSON.stringify(posts));
+
+    loadPosts();
+
+    document.getElementById("title").value = "";
+    document.getElementById("content").value = "";
 }
 
-let savedTime = localStorage.getItem("postTime");
+function loadPosts() {
+    let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+    let container = document.getElementById("posts");
+    container.innerHTML = "";
 
-if (!savedTime) {
-    savedTime = new Date().toISOString();
-    localStorage.setItem("postTime", savedTime);
+    posts.forEach(p => {
+        container.innerHTML += `
+        <div class="post">
+            <h3>${p.title}</h3>
+            <p>${p.content}</p>
+        </div>`;
+    });
 }
 
-const postDate = new Date(savedTime);
-
-function updateTime() {
-    document.getElementById("postTime").innerText = timeAgo(postDate);
-}
-
-updateTime();
-setInterval(updateTime, 60000);
+loadPosts();
 </script>
 
 </body>
