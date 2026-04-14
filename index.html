@@ -8,36 +8,38 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f1f8f3;
-    color: #1b3a1b;
+    background: #0d0f10;
+    color: #e6e6e6;
 }
 
 nav {
-    background: #1f6b3a;
+    background: #111;
     padding: 15px;
     position: sticky;
     top: 0;
     display: flex;
     justify-content: center;
     gap: 20px;
+    border-bottom: 1px solid #1f6b3a;
 }
 
 nav a {
-    color: white;
+    color: #cfcfcf;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
 }
 
 nav a:hover {
-    text-shadow: 0 0 10px #7CFF9B;
+    color: #7CFF9B;
+    text-shadow: 0 0 10px #2e8b57;
 }
 
 header {
-    background: linear-gradient(90deg, #2e8b57, #6fdc8c);
-    color: white;
+    background: linear-gradient(90deg, #1f6b3a, #0f3d24);
     text-align: center;
     padding: 60px 20px;
+    color: white;
 }
 
 .container {
@@ -47,41 +49,43 @@ header {
 }
 
 .card {
-    background: white;
+    background: #151a1c;
     margin-top: 20px;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid #1f2a2e;
     transition: 0.3s;
 }
 
 .card:hover {
     box-shadow: 0 0 25px rgba(46,139,87,0.5);
+    transform: translateY(-2px);
 }
 
 h2 {
-    color: #1f6b3a;
+    color: #7CFF9B;
 }
 
 .fact {
-    background: #e7f7ea;
+    background: #0f1a14;
     padding: 10px;
-    border-left: 5px solid #2e8b57;
+    border-left: 4px solid #2e8b57;
     margin-top: 10px;
 }
 
 button {
-    background: #2e8b57;
+    background: #1f6b3a;
     color: white;
     border: none;
     padding: 10px 15px;
     margin-top: 10px;
     cursor: pointer;
     border-radius: 8px;
+    transition: 0.3s;
 }
 
 button:hover {
-    box-shadow: 0 0 15px #6fdc8c;
+    box-shadow: 0 0 15px #2e8b57;
 }
 
 input, textarea {
@@ -89,24 +93,23 @@ input, textarea {
     padding: 10px;
     margin-top: 10px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
+    background: #0f0f0f;
+    color: white;
 }
 
 .post {
-    background: #ffffff;
+    background: #111;
     padding: 15px;
     border-radius: 10px;
     margin-top: 10px;
-    border-left: 5px solid #2e8b57;
+    border-left: 4px solid #2e8b57;
 }
 
 .quiz-btn {
     display: block;
     text-align: center;
     margin: 40px auto;
-    font-size: 16px;
-    width: fit-content;
-    text-decoration: none;
 }
 </style>
 </head>
@@ -122,47 +125,38 @@ input, textarea {
 
 <header>
     <h1>Silent Heroes: Why Plants Matter</h1>
-    <p>A closer look at plant life and its importance</p>
 </header>
 
 <div class="container">
 
 <div class="card" id="intro">
 <h2>Introduction</h2>
-<p>
-Plants are one of the most important parts of life on Earth. They are often overlooked, but they support almost every living organism in one way or another. Plants provide oxygen, food, materials, and stability to ecosystems. Without them, life would not be able to continue in its current form.
-</p>
+<p>Plants are one of the most important parts of life on Earth. They support almost every ecosystem by producing oxygen, food, and stability for the environment. Even though they are often overlooked, life would not exist in its current form without them.</p>
 </div>
 
 <div class="card" id="importance">
 <h2>Importance of Plants</h2>
-<p>
-Plants produce oxygen through photosynthesis, which is essential for human and animal life. They are also the base of most food chains, meaning even animals that eat meat indirectly depend on plants for survival. Plants also help regulate climate by absorbing carbon dioxide and storing carbon in their tissues.
-</p>
+<p>Plants produce oxygen through photosynthesis, which is essential for living organisms. They also form the base of most food chains, meaning all animals depend on them directly or indirectly. Plants help regulate climate by absorbing carbon dioxide and storing carbon.</p>
 
-<div class="fact">Plants help prevent soil erosion by holding soil in place with their roots.</div>
-<div class="fact">Forests act like natural air filters, improving air quality worldwide.</div>
+<div class="fact">Roots help hold soil together and reduce erosion.</div>
+<div class="fact">Forests improve air quality by filtering pollutants naturally.</div>
 </div>
 
 <div class="card" id="gymno">
 <h2>Gymnosperms</h2>
-<p>
-Gymnosperms are seed-producing plants that do not produce flowers or fruits. Instead, their seeds are exposed, usually forming on cones. Most gymnosperms are evergreen and are adapted to survive in harsh environments such as cold or dry climates. They play a major role in ecosystems by providing habitats and food sources for wildlife.
-</p>
+<p>Gymnosperms are seed-producing plants that do not produce flowers or fruits. Their seeds are exposed, often found on cones. They are usually evergreen and adapted to harsh environments such as cold or dry regions.</p>
 </div>
 
 <div class="card" id="angio">
 <h2>Angiosperms</h2>
-<p>
-Angiosperms are flowering plants and are the most diverse group in the plant kingdom. Their seeds develop inside fruits, which helps protect them and spread them more effectively. These plants include trees, grasses, flowers, and many crops that humans rely on for food. Angiosperms are found in almost every environment on Earth.
-</p>
+<p>Angiosperms are flowering plants and the most diverse plant group on Earth. Their seeds are enclosed in fruits, which helps protect and spread them. They include trees, flowers, grasses, and most food crops humans rely on.</p>
 </div>
 
 <div class="card">
 <h2>Create a Post</h2>
 
-<input id="title" placeholder="Post title">
-<textarea id="content" placeholder="Write your post..."></textarea>
+<input id="title" placeholder="Title">
+<textarea id="content" placeholder="Write your post"></textarea>
 <button onclick="addPost()">Publish</button>
 
 <div id="posts"></div>
@@ -182,7 +176,6 @@ function addPost() {
     if (!title || !content) return;
 
     let posts = JSON.parse(localStorage.getItem("posts") || "[]");
-
     posts.push({title, content});
     localStorage.setItem("posts", JSON.stringify(posts));
 
