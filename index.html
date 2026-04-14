@@ -37,7 +37,7 @@ nav a:hover {
     text-shadow: 0 0 10px #2563eb;
 }
 
-/* FIXED BUTTON */
+/* AUTH BUTTON */
 #authBtn {
     position: absolute;
     right: 15px;
@@ -98,7 +98,6 @@ h2 {
     color: #93c5fd;
 }
 
-/* ✅ BLUE VERTICAL LINE FOR ALL FUN FACTS */
 .fact {
     background: #0f172a;
     padding: 10px;
@@ -106,7 +105,6 @@ h2 {
     margin-top: 10px;
 }
 
-/* BUTTONS */
 button {
     background: #2563eb;
     color: white;
@@ -146,7 +144,7 @@ input, textarea {
     margin: 40px auto;
 }
 
-/* MODAL BACKDROP */
+/* MODALS */
 .modal {
     display: none;
     position: fixed;
@@ -159,33 +157,21 @@ input, textarea {
     align-items: center;
 }
 
-/* ✅ SIGN IN / SIGN UP BOX (20% BIGGER + CENTERED) */
 .authBox {
     background: #111827;
-    padding: 30px;            /* bigger */
+    padding: 25px;
     border-radius: 12px;
-    width: 430px;             /* ~20% bigger than 360px */
-    max-width: 90%;
+    width: 430px; /* ~20% bigger */
 }
 
-/* logout box same sizing */
-#logoutModal .authBox {
-    width: 430px;
-}
-
-/* inputs */
-.authBox input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 8px;
-    border: 1px solid #1f2937;
-    background: #0f0f0f;
-    color: white;
-}
-
-.authBox button {
-    width: 100%;
+/* LOGOUT MODAL */
+.logoutBox {
+    background: #111827;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    border: 1px solid #2563eb;
 }
 </style>
 </head>
@@ -206,7 +192,7 @@ input, textarea {
     <h1>Silent Heroes: Why Plants Matter</h1>
 </header>
 
-<!-- SIGN IN MODAL -->
+<!-- AUTH MODAL -->
 <div id="authModal" class="modal">
     <div class="authBox">
         <h2 id="authTitle">Sign In</h2>
@@ -220,10 +206,10 @@ input, textarea {
 
 <!-- LOGOUT MODAL -->
 <div id="logoutModal" class="modal">
-    <div class="authBox">
-        <h2 id="logoutText">Do you want to logout?</h2>
-        <button onclick="confirmLogout()">Yes</button>
-        <button onclick="cancelLogout()">No</button>
+    <div class="logoutBox">
+        <h3 id="logoutText"></h3>
+        <button onclick="confirmLogout(true)">Yes</button>
+        <button onclick="confirmLogout(false)">No</button>
     </div>
 </div>
 
@@ -287,13 +273,24 @@ function showMessage(text) {
     setTimeout(() => m.style.display = "none", 2500);
 }
 
+/* POSTS */
 function addPost() {
     let title = document.getElementById("title").value;
     let content = document.getElementById("content").value;
     if (!title || !content) return;
 
+    let user = localStorage.getItem("loggedInUser");
+
+    let author;
+    if (user) {
+        author = "by " + user;
+    } else {
+        let rand = Math.floor(Math.random() * 90000) + 10000;
+        author = "by Guest" + rand;
+    }
+
     let posts = JSON.parse(localStorage.getItem("posts") || "[]");
-    posts.push({title, content});
+    posts.push({title, content, author});
     localStorage.setItem("posts", JSON.stringify(posts));
     loadPosts();
 }
@@ -306,6 +303,7 @@ function loadPosts() {
     posts.forEach(p => {
         container.innerHTML += `<div class="post">
             <h3>${p.title}</h3>
+            <small>${p.author || ""}</small>
             <p>${p.content}</p>
         </div>`;
     });
@@ -313,6 +311,7 @@ function loadPosts() {
 
 loadPosts();
 
+/* AUTH */
 let mode = "signin";
 
 function authButtonAction() {
@@ -330,14 +329,11 @@ function closeAuth() {
 
 function toggleMode() {
     mode = mode === "signin" ? "signup" : "signin";
-
     document.getElementById("authTitle").innerText =
         mode === "signin" ? "Sign In" : "Sign Up";
 
     document.getElementById("switchBtn").innerText =
-        mode === "signin"
-        ? "Create an account"
-        : "Already have an account? Sign in";
+        mode === "signin" ? "Create an account" : "Already have an account? Sign in";
 }
 
 function authAction() {
@@ -367,25 +363,26 @@ function updateBtn() {
         user ? "Logout (" + user + ")" : "Sign In / Sign Up";
 }
 
-let pendingUser = null;
+/* LOGOUT MODAL */
+let pendingLogoutUser = null;
 
 function openLogout(user) {
-    pendingUser = user;
+    pendingLogoutUser = user;
     document.getElementById("logoutText").innerText =
         "Do you want to logout of " + user + "?";
     document.getElementById("logoutModal").style.display = "flex";
 }
 
-function confirmLogout() {
-    localStorage.removeItem("loggedInUser");
-    updateBtn();
-    showMessage("You are logged out");
+function confirmLogout(choice) {
+    if (choice) {
+        localStorage.removeItem("loggedInUser");
+        updateBtn();
+        showMessage("Logged out");
+    } else {
+        showMessage("Still logged in");
+    }
     document.getElementById("logoutModal").style.display = "none";
-}
-
-function cancelLogout() {
-    document.getElementById("logoutModal").style.display = "none";
-    document.getElementById("authModal").style.display = "flex";
+    pendingLogoutUser = null;
 }
 
 updateBtn();
