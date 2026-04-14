@@ -12,6 +12,7 @@ body {
     color: #e5e7eb;
 }
 
+/* NAVBAR FIX */
 nav {
     background: #111827;
     padding: 15px;
@@ -21,23 +22,17 @@ nav {
     justify-content: center;
     gap: 20px;
     border-bottom: 1px solid #1f2937;
-    position: relative;
     align-items: center;
+    position: relative;
 }
 
 nav a {
     color: #cfcfcf;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
 }
 
-nav a:hover {
-    color: #93c5fd;
-    text-shadow: 0 0 10px #2563eb;
-}
-
-/* CENTERED AUTH BUTTON FIX */
+/* FIXED BUTTON CENTERING */
 #authBtn {
     position: absolute;
     right: 15px;
@@ -46,38 +41,35 @@ nav a:hover {
     background: #2563eb;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-radius: 8px;
     cursor: pointer;
 }
 
-#authBtn:hover {
-    box-shadow: 0 0 12px #2563eb;
-}
-
-/* MODAL */
-#authModal {
+/* MODAL BACKDROP */
+.modal {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.75);
     justify-content: center;
     align-items: center;
 }
 
+/* BIGGER AUTH BOX FIX */
 .authBox {
     background: #111827;
-    padding: 20px;
-    border-radius: 12px;
-    width: 300px;
+    padding: 30px;
+    border-radius: 14px;
+    width: 380px;
 }
 
 .authBox input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 10px;
     border-radius: 8px;
     border: 1px solid #1f2937;
@@ -88,7 +80,7 @@ nav a:hover {
 .authBox button {
     width: 100%;
     margin-top: 10px;
-    padding: 10px;
+    padding: 12px;
     background: #2563eb;
     color: white;
     border: none;
@@ -96,12 +88,10 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* STATUS TEXT */
 #authMessage {
     margin-top: 10px;
-    font-size: 14px;
-    color: #93c5fd;
     text-align: center;
+    color: #93c5fd;
     min-height: 18px;
 }
 
@@ -110,7 +100,6 @@ header {
     text-align: center;
     padding: 60px 20px;
     color: #93c5fd;
-    border-bottom: 1px solid #1f2937;
 }
 
 .container {
@@ -127,25 +116,11 @@ header {
     border: 1px solid #1f2937;
 }
 
-h2 {
-    color: #93c5fd;
-}
-
 .fact {
     background: #0f172a;
     padding: 10px;
     border-left: 4px solid #2563eb;
     margin-top: 10px;
-}
-
-button {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 8px;
 }
 
 input, textarea {
@@ -156,6 +131,16 @@ input, textarea {
     border: 1px solid #1f2937;
     background: #0f0f0f;
     color: white;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .post {
@@ -182,7 +167,7 @@ input, textarea {
     <a href="#gymno">Gymnosperms</a>
     <a href="#angio">Angiosperms</a>
 
-    <button id="authBtn" onclick="openAuth()">Sign In / Sign Up</button>
+    <button id="authBtn" onclick="authButtonAction()">Sign In / Sign Up</button>
 </nav>
 
 <header>
@@ -190,64 +175,53 @@ input, textarea {
 </header>
 
 <!-- AUTH MODAL -->
-<div id="authModal">
+<div id="authModal" class="modal">
     <div class="authBox">
-        <h3 id="authTitle">Sign In</h3>
+        <h2 id="authTitle">Sign In</h2>
 
         <input id="username" placeholder="Username">
         <input id="password" type="password" placeholder="Password">
 
-        <button onclick="authAction()">Continue</button>
-
-        <button onclick="toggleAuthMode()" id="switchBtn">
-            Create an account
-        </button>
-
-        <button onclick="closeAuth()">Close</button>
-
         <div id="authMessage"></div>
+
+        <button onclick="authAction()">Continue</button>
+        <button onclick="toggleMode()" id="switchBtn">Create an account</button>
+        <button onclick="closeAuth()">Close</button>
+    </div>
+</div>
+
+<!-- LOGOUT MODAL -->
+<div id="logoutModal" class="modal">
+    <div class="authBox">
+        <h3 id="logoutText"></h3>
+        <button onclick="logout()">Logout</button>
+        <button onclick="closeLogout()">Cancel</button>
     </div>
 </div>
 
 <div class="container">
 
-<div class="card" id="intro">
+<div class="card">
 <h2>Introduction</h2>
-<p>Plants are essential living organisms that support nearly all life on Earth.</p>
-<div class="fact">Fun Fact: Plants were the first organisms on land.</div>
-</div>
-
-<div class="card" id="importance">
-<h2>Importance of Plants</h2>
-<p>Plants produce oxygen and form the base of food chains.</p>
-<div class="fact">Fun Fact: One tree can support multiple humans with oxygen.</div>
-</div>
-
-<div class="card" id="gymno">
-<h2>Gymnosperms</h2>
-<p>Seed plants without flowers or fruits.</p>
-<div class="fact">Fun Fact: Some live over 1000 years.</div>
-</div>
-
-<div class="card" id="angio">
-<h2>Angiosperms</h2>
-<p>Flowering plants and most diverse group.</p>
-<div class="fact">Fun Fact: They make up most plant life on Earth.</div>
+<p>Plants are essential for life on Earth.</p>
+<div class="fact">Fun Fact: Plants were among the first life on land.</div>
 </div>
 
 <div class="card">
-<h2>Create a Post</h2>
+<h2>Importance</h2>
+<p>Plants produce oxygen and food for ecosystems.</p>
+<div class="fact">Fun Fact: Trees can support multiple humans with oxygen daily.</div>
+</div>
+
+<div class="card">
+<h2>Create Post</h2>
 
 <input id="title" placeholder="Title">
-<textarea id="content" placeholder="Write your post"></textarea>
-<button onclick="addPost()">Publish</button>
+<textarea id="content" placeholder="Write post"></textarea>
+<button onclick="addPost()">Post</button>
 
 <div id="posts"></div>
 </div>
-
-<a class="quiz-btn" href="quiz.html">
-<button>Take Quiz</button>
-</a>
 
 </div>
 
@@ -285,65 +259,95 @@ loadPosts();
 
 
 // AUTH SYSTEM
-let authMode = "signin";
+let mode = "signin";
+
+function authButtonAction() {
+    let user = localStorage.getItem("loggedInUser");
+
+    if (user) {
+        openLogout(user);
+    } else {
+        openAuth();
+    }
+}
 
 function openAuth() {
     document.getElementById("authModal").style.display = "flex";
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("authMessage").innerText = "";
 }
 
 function closeAuth() {
     document.getElementById("authModal").style.display = "none";
+}
+
+function toggleMode() {
+    mode = mode === "signin" ? "signup" : "signin";
+
+    document.getElementById("authTitle").innerText =
+        mode === "signin" ? "Sign In" : "Sign Up";
+
+    document.getElementById("switchBtn").innerText =
+        mode === "signin"
+        ? "Create an account"
+        : "Already have an account? Sign in";
+
     document.getElementById("authMessage").innerText = "";
 }
 
-function toggleAuthMode() {
-    let title = document.getElementById("authTitle");
-    let msg = document.getElementById("authMessage");
-    let btn = document.getElementById("switchBtn");
-
-    authMode = authMode === "signin" ? "signup" : "signin";
-
-    if (authMode === "signup") {
-        title.innerText = "Sign Up";
-        btn.innerText = "Already have an account? Sign in";
-    } else {
-        title.innerText = "Sign In";
-        btn.innerText = "Create an account";
-    }
-
-    msg.innerText = "";
-}
-
 function authAction() {
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+    let u = document.getElementById("username").value;
+    let p = document.getElementById("password").value;
     let msg = document.getElementById("authMessage");
 
-    if (!username || !password) return;
+    if (!u || !p) return;
 
-    if (authMode === "signup") {
-        localStorage.setItem("user_" + username, password);
-        msg.innerText = "Account created successfully!";
+    if (mode === "signup") {
+        localStorage.setItem("user_" + u, p);
+        msg.innerText = "Account created";
     } else {
-        let saved = localStorage.getItem("user_" + username);
+        let saved = localStorage.getItem("user_" + u);
 
-        if (saved === password) {
-            localStorage.setItem("loggedInUser", username);
-            msg.innerText = "Signed in!";
-            updateAuthButton();
+        if (saved === p) {
+            localStorage.setItem("loggedInUser", u);
+            closeAuth();
+            updateBtn();
         } else {
-            msg.innerText = "Wrong username or password.";
+            msg.innerText = "Wrong password or username";
         }
     }
 }
 
-function updateAuthButton() {
+function updateBtn() {
     let user = localStorage.getItem("loggedInUser");
     document.getElementById("authBtn").innerText =
         user ? "Logout (" + user + ")" : "Sign In / Sign Up";
 }
 
-updateAuthButton();
+// LOGOUT SYSTEM
+function openLogout(user) {
+    document.getElementById("logoutModal").style.display = "flex";
+    document.getElementById("logoutText").innerText =
+        "Do you want to logout of " + user + "?";
+}
+
+function closeLogout() {
+    document.getElementById("logoutModal").style.display = "none";
+}
+
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    closeLogout();
+    updateBtn();
+
+    alert("You are logged out");
+
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+}
+
+updateBtn();
 
 </script>
 
