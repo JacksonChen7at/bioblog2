@@ -12,7 +12,6 @@ body {
     color: #e5e7eb;
 }
 
-/* NAVBAR FIX */
 nav {
     background: #111827;
     padding: 15px;
@@ -30,6 +29,12 @@ nav a {
     color: #cfcfcf;
     text-decoration: none;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #93c5fd;
+    text-shadow: 0 0 10px #2563eb;
 }
 
 /* FIXED BUTTON CENTERING */
@@ -46,53 +51,18 @@ nav a {
     cursor: pointer;
 }
 
-/* MODAL BACKDROP */
-.modal {
-    display: none;
+/* MESSAGE BAR (NO ALERTS) */
+#message {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.75);
-    justify-content: center;
-    align-items: center;
-}
-
-/* BIGGER AUTH BOX FIX */
-.authBox {
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
     background: #111827;
-    padding: 30px;
-    border-radius: 14px;
-    width: 380px;
-}
-
-.authBox input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
+    border: 1px solid #2563eb;
+    padding: 10px 20px;
     border-radius: 8px;
-    border: 1px solid #1f2937;
-    background: #0f0f0f;
-    color: white;
-}
-
-.authBox button {
-    width: 100%;
-    margin-top: 10px;
-    padding: 12px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-#authMessage {
-    margin-top: 10px;
-    text-align: center;
-    color: #93c5fd;
-    min-height: 18px;
+    display: none;
+    z-index: 999;
 }
 
 header {
@@ -100,6 +70,7 @@ header {
     text-align: center;
     padding: 60px 20px;
     color: #93c5fd;
+    border-bottom: 1px solid #1f2937;
 }
 
 .container {
@@ -114,6 +85,16 @@ header {
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #1f2937;
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 0 25px rgba(37,99,235,0.4);
+    transform: translateY(-2px);
+}
+
+h2 {
+    color: #93c5fd;
 }
 
 .fact {
@@ -121,6 +102,21 @@ header {
     padding: 10px;
     border-left: 4px solid #2563eb;
     margin-top: 10px;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 0 15px #2563eb;
 }
 
 input, textarea {
@@ -131,16 +127,6 @@ input, textarea {
     border: 1px solid #1f2937;
     background: #0f0f0f;
     color: white;
-}
-
-button {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin-top: 10px;
-    border-radius: 8px;
-    cursor: pointer;
 }
 
 .post {
@@ -156,6 +142,40 @@ button {
     text-align: center;
     margin: 40px auto;
 }
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    justify-content: center;
+    align-items: center;
+}
+
+.authBox {
+    background: #111827;
+    padding: 25px;
+    border-radius: 12px;
+    width: 360px;
+}
+
+.authBox input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background: #0f0f0f;
+    color: white;
+}
+
+.authBox button {
+    width: 100%;
+}
 </style>
 </head>
 
@@ -170,11 +190,13 @@ button {
     <button id="authBtn" onclick="authButtonAction()">Sign In / Sign Up</button>
 </nav>
 
+<div id="message"></div>
+
 <header>
     <h1>Silent Heroes: Why Plants Matter</h1>
 </header>
 
-<!-- AUTH MODAL -->
+<!-- AUTH -->
 <div id="authModal" class="modal">
     <div class="authBox">
         <h2 id="authTitle">Sign In</h2>
@@ -182,50 +204,61 @@ button {
         <input id="username" placeholder="Username">
         <input id="password" type="password" placeholder="Password">
 
-        <div id="authMessage"></div>
-
         <button onclick="authAction()">Continue</button>
         <button onclick="toggleMode()" id="switchBtn">Create an account</button>
         <button onclick="closeAuth()">Close</button>
     </div>
 </div>
 
-<!-- LOGOUT MODAL -->
-<div id="logoutModal" class="modal">
-    <div class="authBox">
-        <h3 id="logoutText"></h3>
-        <button onclick="logout()">Logout</button>
-        <button onclick="closeLogout()">Cancel</button>
-    </div>
-</div>
-
 <div class="container">
 
-<div class="card">
+<div class="card" id="intro">
 <h2>Introduction</h2>
-<p>Plants are essential for life on Earth.</p>
-<div class="fact">Fun Fact: Plants were among the first life on land.</div>
+<p>Plants are one of the most important parts of life on Earth. They support almost every ecosystem by producing oxygen, food, and stability for the environment. Even though they are often overlooked, life would not exist in its current form without them.</p>
+</div>
+
+<div class="card" id="importance">
+<h2>Importance of Plants</h2>
+<p>Plants produce oxygen through photosynthesis, which is essential for living organisms. They also form the base of most food chains, meaning all animals depend on them directly or indirectly. Plants help regulate climate by absorbing carbon dioxide and storing carbon.</p>
+
+<div class="fact">Roots help hold soil together and reduce erosion.</div>
+<div class="fact">Forests improve air quality by filtering pollutants naturally.</div>
+</div>
+
+<div class="card" id="gymno">
+<h2>Gymnosperms</h2>
+<p>Gymnosperms are seed-producing plants that do not produce flowers or fruits. Their seeds are exposed, often found on cones. They are usually evergreen and adapted to harsh environments such as cold or dry regions.</p>
+</div>
+
+<div class="card" id="angio">
+<h2>Angiosperms</h2>
+<p>Angiosperms are flowering plants and the most diverse plant group on Earth. Their seeds are enclosed in fruits, which helps protect and spread them. They include trees, flowers, grasses, and most food crops humans rely on.</p>
 </div>
 
 <div class="card">
-<h2>Importance</h2>
-<p>Plants produce oxygen and food for ecosystems.</p>
-<div class="fact">Fun Fact: Trees can support multiple humans with oxygen daily.</div>
-</div>
-
-<div class="card">
-<h2>Create Post</h2>
+<h2>Create a Post</h2>
 
 <input id="title" placeholder="Title">
-<textarea id="content" placeholder="Write post"></textarea>
-<button onclick="addPost()">Post</button>
+<textarea id="content" placeholder="Write your post"></textarea>
+<button onclick="addPost()">Publish</button>
 
 <div id="posts"></div>
 </div>
 
+<a class="quiz-btn" href="quiz.html">
+<button>Done reading? Take a quiz</button>
+</a>
+
 </div>
 
 <script>
+
+function showMessage(text) {
+    let m = document.getElementById("message");
+    m.innerText = text;
+    m.style.display = "block";
+    setTimeout(() => m.style.display = "none", 2500);
+}
 
 // POSTS
 function addPost() {
@@ -258,7 +291,7 @@ function loadPosts() {
 loadPosts();
 
 
-// AUTH SYSTEM
+// AUTH
 let mode = "signin";
 
 function authButtonAction() {
@@ -267,15 +300,8 @@ function authButtonAction() {
     if (user) {
         openLogout(user);
     } else {
-        openAuth();
+        document.getElementById("authModal").style.display = "flex";
     }
-}
-
-function openAuth() {
-    document.getElementById("authModal").style.display = "flex";
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("authMessage").innerText = "";
 }
 
 function closeAuth() {
@@ -292,20 +318,17 @@ function toggleMode() {
         mode === "signin"
         ? "Create an account"
         : "Already have an account? Sign in";
-
-    document.getElementById("authMessage").innerText = "";
 }
 
 function authAction() {
     let u = document.getElementById("username").value;
     let p = document.getElementById("password").value;
-    let msg = document.getElementById("authMessage");
 
     if (!u || !p) return;
 
     if (mode === "signup") {
         localStorage.setItem("user_" + u, p);
-        msg.innerText = "Account created";
+        showMessage("Account created");
     } else {
         let saved = localStorage.getItem("user_" + u);
 
@@ -313,8 +336,9 @@ function authAction() {
             localStorage.setItem("loggedInUser", u);
             closeAuth();
             updateBtn();
+            showMessage("Logged in successfully");
         } else {
-            msg.innerText = "Wrong password or username";
+            showMessage("Wrong username or password");
         }
     }
 }
@@ -325,26 +349,14 @@ function updateBtn() {
         user ? "Logout (" + user + ")" : "Sign In / Sign Up";
 }
 
-// LOGOUT SYSTEM
+// LOGOUT
 function openLogout(user) {
-    document.getElementById("logoutModal").style.display = "flex";
-    document.getElementById("logoutText").innerText =
-        "Do you want to logout of " + user + "?";
-}
-
-function closeLogout() {
-    document.getElementById("logoutModal").style.display = "none";
-}
-
-function logout() {
-    localStorage.removeItem("loggedInUser");
-    closeLogout();
-    updateBtn();
-
-    alert("You are logged out");
-
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
+    let ok = confirm("Do you want to logout of " + user + "?");
+    if (ok) {
+        localStorage.removeItem("loggedInUser");
+        updateBtn();
+        showMessage("You are logged out");
+    }
 }
 
 updateBtn();
