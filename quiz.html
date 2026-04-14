@@ -2,188 +2,300 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Plant Biology Quiz</title>
-
+<title>Plant Blog</title>
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0b1220;
-    color: #e5e7eb;
-    line-height: 1.6;
+    background: #0b0b0f;
+    color: white;
 }
 
+/* HEADER */
 header {
-    background: #111827;
-    padding: 25px;
+    padding: 20px;
     text-align: center;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: bold;
-    border-bottom: 1px solid #1f2937;
+    background: #111;
+    border-bottom: 1px solid #222;
 }
 
+/* BLOG CONTAINER */
 .container {
     width: 80%;
     margin: auto;
     padding: 20px;
 }
 
-.question {
-    background: #111827;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 10px;
-    border: 1px solid #1f2937;
+/* POST CARD */
+.post {
+    background: #15151d;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 1px solid #222;
 }
 
-button {
-    background: #2563eb;
-    color: white;
+.post h2 {
+    color: #7cc7ff;
+}
+
+/* FUN FACT STYLE */
+.fun-fact {
+    border-left: 4px solid #4da3ff;
+    padding: 10px;
+    margin-top: 10px;
+    background: #10101a;
+}
+
+/* TIME */
+.time {
+    font-size: 12px;
+    color: gray;
+}
+
+/* BUTTON */
+.button {
+    display: block;
+    width: 200px;
+    margin: 30px auto;
+    padding: 12px;
+    background: #4da3ff;
     border: none;
-    padding: 12px 18px;
-    border-radius: 10px;
-    cursor: pointer;
+    color: black;
     font-weight: bold;
-    margin-top: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
 }
 
-button:hover {
-    background: #1d4ed8;
-}
-
-/* POPUP */
-.popup {
+/* QUIZ OVERLAY */
+#quizOverlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.7);
+    background: #000;
     display: none;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.popup-content {
-    background: #111827;
+.quiz-box {
+    background: #15151d;
+    padding: 20px;
+    border-radius: 12px;
+    width: 60%;
+}
+
+.quiz-box h3 {
+    color: #7cc7ff;
+}
+
+/* SCORE SCREEN */
+#scoreScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.score-box {
+    background: #15151d;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 12px;
     text-align: center;
-    border: 1px solid #2563eb;
-    position: relative;
-    overflow: hidden;
 }
 
-.popup-content h1 {
-    color: #93c5fd;
-}
-
-/* confetti */
+/* CONFETTI */
 .confetti {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: red;
-    top: -10px;
-    animation: fall 2s linear infinite;
-}
-
-@keyframes fall {
-    0% { transform: translateY(-20px) rotate(0deg); }
-    100% { transform: translateY(300px) rotate(360deg); opacity: 0; }
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
 }
 </style>
 </head>
 
 <body>
 
-<header>Plant Biology Quiz</header>
+<header>Plant Biology Blog</header>
 
 <div class="container">
 
-<div class="question">
-<p>1. What do gymnosperms produce?</p>
-<input type="radio" name="q1" value="0"> Fruits<br>
-<input type="radio" name="q1" value="1"> Naked seeds<br>
+<!-- POST TIME SCRIPT -->
+<script>
+function timeAgo(date) {
+    let now = new Date();
+    let diff = Math.floor((now - date) / 1000);
+
+    if (diff < 60) return diff + "s ago";
+    if (diff < 3600) return Math.floor(diff/60) + "m ago";
+    if (diff < 86400) return Math.floor(diff/3600) + "h ago";
+    if (diff < 31536000) return Math.floor(diff/86400) + "d ago";
+    return Math.floor(diff/31536000) + "y ago";
+}
+</script>
+
+<!-- BLOG POSTS -->
+
+<div class="post">
+<h2>Gymnosperms</h2>
+<div class="time" id="time1"></div>
+
+<p>
+Gymnosperms are a group of seed-producing plants that do not form flowers or fruits. Instead, they reproduce using cones that hold exposed seeds. One of the most well-known gymnosperms is the pine tree, which grows tall and strong with needle-like leaves that help reduce water loss. These plants are especially adapted to survive in cold or dry environments where other plants may struggle. Their ability to stay green year-round allows them to continue photosynthesis even during harsh seasons, giving them a major survival advantage in nature.
+</p>
+
+<div class="fun-fact">
+Fun Fact: Pine trees can survive freezing temperatures because their needles contain special waxy coatings that prevent water loss and damage.
 </div>
 
-<div class="question">
-<p>2. Angiosperms are also called:</p>
-<input type="radio" name="q2" value="1"> Flowering plants<br>
-<input type="radio" name="q2" value="0"> Cone plants<br>
+<p>
+Another important gymnosperm is the cycad. Cycads look similar to palm trees but are actually much older in evolutionary history. They were common during the time of dinosaurs and are often called “living fossils.” Cycads grow slowly and produce large, stiff leaves along a thick trunk. They thrive in warm climates and are often found in tropical and subtropical regions.
+</p>
+
+<div class="fun-fact">
+Fun Fact: Cycads have existed for over 280 million years, making them one of the oldest surviving plant groups on Earth.
+</div>
 </div>
 
-<div class="question">
-<p>3. Gymnosperm seeds are found on:</p>
-<input type="radio" name="q3" value="1"> Cones<br>
-<input type="radio" name="q3" value="0"> Fruits<br>
+<div class="post">
+<h2>Angiosperms</h2>
+<div class="time" id="time2"></div>
+
+<p>
+Angiosperms are flowering plants that produce seeds inside fruits. This makes them different from gymnosperms, which have exposed seeds. Angiosperms are the most diverse group of plants on Earth and can be found in almost every environment. One example is grass, which belongs to the monocot group. Grass has thin leaves with parallel veins and grows in large fields, lawns, and natural landscapes. Many of the world’s most important food crops, including wheat, rice, and corn, come from grass species.
+</p>
+
+<div class="fun-fact">
+Fun Fact: Grass covers about 40% of Earth’s land surface, making it one of the most widespread plant types.
 </div>
 
-<div class="question">
-<p>4. What helps angiosperms spread seeds?</p>
-<input type="radio" name="q4" value="1"> Fruits<br>
-<input type="radio" name="q4" value="0"> Rocks<br>
+<p>
+Another example of angiosperms is the sunflower, which belongs to the dicot group. Sunflowers are known for their large yellow flower heads that follow the movement of the sun throughout the day. Their broad leaves contain branching veins that help transport water and nutrients efficiently. Sunflowers grow best in sunny environments and produce large amounts of seeds that are used for food and oil.
+</p>
+
+<div class="fun-fact">
+Fun Fact: A single sunflower head can contain over 1,000 seeds, depending on its size and growing conditions.
+</div>
 </div>
 
-<div class="question">
-<p>5. Which group is most diverse?</p>
-<input type="radio" name="q5" value="1"> Angiosperms<br>
-<input type="radio" name="q5" value="0"> Gymnosperms<br>
-</div>
-
-<div class="question">
-<p>6. Gymnosperms mostly rely on:</p>
-<input type="radio" name="q6" value="1"> Wind<br>
-<input type="radio" name="q6" value="0"> Animals only<br>
-</div>
-
-<button onclick="checkScore()">Submit Quiz</button>
+<button class="button" onclick="openQuiz()">Done reading? Take the quiz</button>
 
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-    <div class="popup-content">
-        <h1 id="scoreText"></h1>
-        <button onclick="restart()">Do It Again</button>
-    </div>
+<!-- QUIZ -->
+<div id="quizOverlay">
+<div class="quiz-box">
+<h3>Quiz (6 Questions)</h3>
+
+<div id="quiz">
+<p>1. Gymnosperms produce seeds in what structure?</p>
+<input id="q1">
+
+<p>2. Name one gymnosperm.</p>
+<input id="q2">
+
+<p>3. What is unique about angiosperm seeds?</p>
+<input id="q3">
+
+<p>4. Give one example of a monocot.</p>
+<input id="q4">
+
+<p>5. What do sunflowers do during the day?</p>
+<input id="q5">
+
+<p>6. Are cycads ancient or modern plants?</p>
+<input id="q6">
+
+<br><br>
+<button onclick="submitQuiz()">Submit Quiz</button>
+</div>
+</div>
+</div>
+
+<!-- SCORE SCREEN -->
+<div id="scoreScreen">
+<div class="score-box">
+<h2 id="scoreText"></h2>
+<button onclick="restartQuiz()">Try Again</button>
+</div>
 </div>
 
 <script>
-function checkScore() {
+// STORE POST TIMES (persistent)
+function initTimes() {
+    if (!localStorage.getItem("postTime1")) {
+        localStorage.setItem("postTime1", Date.now());
+        localStorage.setItem("postTime2", Date.now());
+    }
+}
+
+function updateTimes() {
+    let t1 = new Date(parseInt(localStorage.getItem("postTime1")));
+    let t2 = new Date(parseInt(localStorage.getItem("postTime2")));
+
+    document.getElementById("time1").innerText = timeAgo(t1);
+    document.getElementById("time2").innerText = timeAgo(t2);
+}
+
+initTimes();
+updateTimes();
+setInterval(updateTimes, 60000);
+
+// QUIZ
+function openQuiz() {
+    document.getElementById("quizOverlay").style.display = "flex";
+}
+
+function submitQuiz() {
     let score = 0;
 
-    for (let i = 1; i <= 6; i++) {
-        let answer = document.querySelector('input[name="q' + i + '"]:checked');
-        if (answer) score += parseInt(answer.value);
-    }
+    if (document.getElementById("q1").value.toLowerCase().includes("cone")) score++;
+    if (document.getElementById("q2").value.toLowerCase().includes("pine") || document.getElementById("q2").value.toLowerCase().includes("cycad")) score++;
+    if (document.getElementById("q3").value.toLowerCase().includes("fruit") || document.getElementById("q3").value.toLowerCase().includes("inside")) score++;
+    if (document.getElementById("q4").value.toLowerCase().includes("grass")) score++;
+    if (document.getElementById("q5").value.toLowerCase().includes("sun")) score++;
+    if (document.getElementById("q6").value.toLowerCase().includes("ancient")) score++;
 
-    document.getElementById("scoreText").innerText =
-        "Your Score: " + score + " / 6";
+    document.getElementById("quizOverlay").style.display = "none";
+    showScore(score);
+}
 
-    document.getElementById("popup").style.display = "flex";
-
+// SCORE SCREEN + CONFETTI
+function showScore(score) {
+    document.getElementById("scoreScreen").style.display = "flex";
+    document.getElementById("scoreText").innerText = "Your Score: " + score + "/6";
     launchConfetti();
 }
 
-function restart() {
-    location.reload();
+function restartQuiz() {
+    document.getElementById("scoreScreen").style.display = "none";
 }
 
+// SIMPLE CONFETTI EFFECT
 function launchConfetti() {
-    const popup = document.querySelector(".popup-content");
+    for (let i = 0; i < 100; i++) {
+        let conf = document.createElement("div");
+        conf.className = "confetti";
+        conf.style.left = Math.random() * 100 + "%";
+        conf.style.top = Math.random() * 100 + "%";
+        conf.style.background = "white";
+        conf.style.width = "5px";
+        conf.style.height = "5px";
+        conf.style.position = "fixed";
+        document.body.appendChild(conf);
 
-    for (let i = 0; i < 40; i++) {
-        let confetti = document.createElement("div");
-        confetti.classList.add("confetti");
-
-        confetti.style.left = Math.random() * 100 + "%";
-        confetti.style.background = ["#2563eb","#93c5fd","#22c55e","#facc15","#ef4444"][Math.floor(Math.random()*5)];
-        confetti.style.animationDuration = (Math.random() * 2 + 1) + "s";
-
-        popup.appendChild(confetti);
-
-        setTimeout(() => confetti.remove(), 3000);
+        setTimeout(() => conf.remove(), 2000);
     }
 }
 </script>
